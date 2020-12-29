@@ -29,9 +29,12 @@ RUN \
 	apk add --no-cache unrar && \
 	pip install --upgrade \
 		rarfile && \
+	echo "**** install dependencies for plugin: transmission-rpc ****" && \
+	apk add --no-cache --virtual=build-deps build-base python3-dev && \
+	pip install --upgrade transmission-rpc && \
+	apk del --purge --no-cache build-deps && \
 	echo "**** install dependencies for plugin: misc ****" && \
 	pip install --upgrade \
-		transmission-rpc \
 		deluge-client \
 		irc_bot && \
 	echo "**** install flexget ****" && \
