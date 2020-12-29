@@ -18,11 +18,9 @@ RUN \
 	echo "**** install dependencies for plugin: telegram ****" && \
 	apk add --no-cache --virtual=build-deps gcc python3-dev libffi-dev musl-dev openssl-dev && \
 	pip install --upgrade python-telegram-bot==12.8 PySocks && \
-	apk del --purge --no-cache build-deps && \
 	echo "**** install dependencies for plugin: cfscraper ****" && \
 	apk add --no-cache --virtual=build-deps g++ gcc python3-dev libffi-dev openssl-dev && \
 	pip install --upgrade cloudscraper && \
-	apk del --purge --no-cache build-deps && \
 	echo "**** install dependencies for plugin: convert_magnet ****" && \
 	apk add --no-cache boost-python3 libstdc++ && \
 	echo "**** install dependencies for plugin: decompress ****" && \
@@ -32,7 +30,6 @@ RUN \
 	echo "**** install dependencies for plugin: transmission-rpc ****" && \
 	apk add --no-cache --virtual=build-deps build-base python3-dev && \
 	pip install --upgrade transmission-rpc && \
-	apk del --purge --no-cache build-deps && \
 	echo "**** install dependencies for plugin: misc ****" && \
 	pip install --upgrade \
 		deluge-client \
