@@ -31,7 +31,7 @@ RUN \
 		rarfile && \
 	echo "**** install dependencies for plugin: misc ****" && \
 	pip install --upgrade \
-		transmissionrpc \
+		transmission-rpc \
 		deluge-client \
 		irc_bot && \
 	echo "**** install flexget ****" && \
