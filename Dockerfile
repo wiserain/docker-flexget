@@ -1,4 +1,4 @@
-ARG ALPINE_VER=3.12
+ARG ALPINE_VER=3.13
 ARG LIBTORRENT_VER=latest
 
 FROM wiserain/libtorrent:${LIBTORRENT_VER}-alpine${ALPINE_VER}-py3 AS libtorrent
