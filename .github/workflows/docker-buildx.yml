@@ -38,7 +38,6 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm/v7,linux/arm64
-          push: false
           tags: |
             ${{ env.DOCKERHUB_USER }}/${{ env.DOCKERHUB_REPO }}:testing
       - 
