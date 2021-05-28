@@ -56,21 +56,21 @@ cryptography==3.3.2
     # via
     #   -r requirements.in
     #   python-telegram-bot
-decorator==5.0.7
+decorator==5.0.9
     # via python-telegram-bot
 deluge-client==1.9.0
     # via -r requirements.in
-feedparser==6.0.2
+feedparser==6.0.8
     # via flexget
-flask-compress==1.9.0
+flask-compress==1.10.1
     # via flexget
 flask-cors==3.0.10
     # via flexget
 flask-login==0.5.0
     # via flexget
-flask-restful==0.3.8
+flask-restful==0.3.9
     # via flexget
-flask-restx==0.3.0
+flask-restx==0.4.0
     # via flexget
 flask==1.1.2
     # via
@@ -80,7 +80,7 @@ flask==1.1.2
     #   flask-restful
     #   flask-restx
     #   flexget
-flexget==3.1.120
+flexget==3.1.131
     # via -r requirements.in
 future==0.18.2
     # via irc-bot
@@ -96,7 +96,7 @@ idna==2.10
     # via
     #   flexget
     #   requests
-importlib-metadata==4.0.1
+importlib-metadata==4.6.0
     # via flexget
 irc-bot==1.0.35
     # via -r requirements.in
@@ -122,7 +122,7 @@ jaraco.text==3.5.0
     # via
     #   flexget
     #   jaraco.collections
-jinja2==2.11.3
+jinja2==3.0.1
     # via
     #   flask
     #   flexget
@@ -132,11 +132,11 @@ jsonschema==3.2.0
     #   flexget
 loguru==0.5.3
     # via flexget
-markupsafe==1.1.1
+markupsafe==2.0.0
     # via
     #   flexget
     #   jinja2
-more-itertools==8.7.0
+more-itertools==8.8.0
     # via
     #   cheroot
     #   cherrypy
@@ -224,7 +224,7 @@ soupsieve==2.2.1
     # via
     #   beautifulsoup4
     #   flexget
-sqlalchemy==1.4.13
+sqlalchemy==1.4.20
     # via flexget
 tempora==4.0.2
     # via
@@ -236,7 +236,7 @@ tornado==6.1
     # via python-telegram-bot
 transmission-rpc==3.2.5
     # via -r requirements.in
-typing-extensions==3.7.4.3
+typing-extensions==3.10.0.0
     # via
     #   flexget
     #   transmission-rpc
