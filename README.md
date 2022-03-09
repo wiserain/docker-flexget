@@ -16,6 +16,8 @@ Container features are
 
 ## Usage
 
+### docker run
+
 ```bash
 docker run -d \
     --name=<container name> \
@@ -30,6 +32,27 @@ docker run -d \
     -e TZ=<timezone> \
     wiserain/flexget
 ```
+### docker-compose
+
+```yml
+version: "3"
+services:
+  flexget:
+    image: wiserain/flexget
+    container_name: <container name>
+    environment:
+      - FG_WEBUI_PASSWD=<desired password>
+      - FG_LOG_LEVEL=info
+      - FG_LOG_FILE=flexget.log
+      - PUID=<UID for user>
+      - PGID=<GID for user>
+    ports :
+      - 5050:5050
+    volumes:
+      - <path for data files>:/data
+      - <path for config files>:/config
+    restart: on-failure:5 
+ ```
 
 Most importantly, secure webui using ```FG_WEBUI_PASSWD```.
 
