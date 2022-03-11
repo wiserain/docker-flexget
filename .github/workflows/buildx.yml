@@ -122,7 +122,7 @@ jobs:
             ghcr.io/${{ env.IMAGE_NAME }}:${{ env.VER_MAJOR }}
       -
         name: Commit requirements.txt
-        uses: EndBug/add-and-commit@v8
+        uses: EndBug/add-and-commit@v9
         with:
           message: |
             Update requirements.txt
