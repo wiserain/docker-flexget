@@ -71,7 +71,7 @@ class ConvertMagnet:
             params['flags'] |= lt.add_torrent_params_flags_t.flag_upload_mode
         else:
             params.flags |= lt.add_torrent_params_flags_t.flag_upload_mode
-        
+
         lt_version = [int(v) for v in lt.version.split('.')]
         if [0, 16, 13, 0] < lt_version < [1, 1, 3, 0]:
             # for some reason the info_hash needs to be bytes but it's a struct called sha1_hash
@@ -132,7 +132,7 @@ class ConvertMagnet:
             handle.force_dht_announce()
 
         logger.debug('Acquiring torrent metadata for magnet {}', magnet_uri)
-        
+
         max_try = max(num_try, 1)
         for tryid in range(max_try):
             timeout_value = timeout
@@ -153,7 +153,7 @@ class ConvertMagnet:
                     raise plugin.PluginError(
                         'Timed out after {}*{} seconds'.format(max_try, timeout)
                     )
-    
+
         # create torrent object
         torrent = lt.create_torrent(lt_info)
         torrent.set_creator('libtorrent v{}'.format(lt.version))    # signature
@@ -164,7 +164,7 @@ class ConvertMagnet:
             'trackers': params['trackers'] if isinstance(params, dict) else params.trackers,
             'creation_date': datetime.fromtimestamp(torrent_dict[b'creation date']).isoformat(),
         })
-        
+
         # start scraping
         timeout_value = timeout
         logger.debug('Trying to get peerinfo ... ')
@@ -177,7 +177,7 @@ class ConvertMagnet:
         if handle.status(0).num_complete >= 0:
             torrent_status = handle.status(0)
             logger.debug('Peerinfo acquired after {:.1f} seconds', timeout - timeout_value)
-            
+
             torrent_info.update({
                 'seeders': torrent_status.num_complete,
                 'peers': torrent_status.num_incomplete,
@@ -255,7 +255,7 @@ class ConvertMagnet:
 
                 # TODO: could be populate extra fields from torrent_info
                 entry['content_size'] = torrent_info['total_size']
-                entry['seeders'] = torrent_info['seeders']                
+                entry['seeders'] = torrent_info['seeders']
                 entry['leechers'] = torrent_info['peers']
 
 
