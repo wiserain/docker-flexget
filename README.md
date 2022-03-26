@@ -39,7 +39,7 @@ services:
   flexget:
     image: wiserain/flexget
     container_name: <container name>
-    restart: on-failure:5 
+    restart: on-failure:5
     ports :
       - 5050:5050
     volumes:
