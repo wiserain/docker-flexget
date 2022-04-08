@@ -126,7 +126,7 @@ jobs:
           message: |
             Update requirements.txt
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: requirements.txt
@@ -204,7 +204,7 @@ jobs:
             ghcr.io/${{ env.IMAGE_NAME }}:testing
             ghcr.io/${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: requirements.txt
