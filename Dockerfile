@@ -25,7 +25,7 @@ FROM jlesage/alpine-abuild:${ALPINE_VER} AS unrar
 ARG ALPINE_VER
 
 RUN \
-    git clone https://git.alpinelinux.org/aports /tmp/aports -b ${ALPINE_VER}-stable --depth=1 && \
+    git clone https://github.com/alpinelinux/aports /tmp/aports -b ${ALPINE_VER}-stable --depth=1 && \
     PKG_SRC_DIR=/tmp/aports/non-free/unrar && \
     PKG_DST_DIR=/unrar-build && \
     mkdir "$PKG_DST_DIR" && \
