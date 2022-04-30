@@ -74,6 +74,8 @@ COPY --from=libtorrent /libtorrent-build/usr/lib/ /bar/usr/lib/
 # copy unrar
 COPY --from=unrar /unrar-build/usr/ /bar/usr/
 
+ADD https://raw.githubusercontent.com/by275/docker-base/main/_/etc/cont-init.d/install-pkg /bar/etc/cont-init.d/15-install-pkg
+
 # copy local files
 COPY root/ /bar/
 
