@@ -20,17 +20,33 @@ RUN \
 # 
 # BUILD
 # 
-FROM jlesage/alpine-abuild:${ALPINE_VER} AS unrar
+FROM alpine:${ALPINE_VER} AS unrar
 
 ARG ALPINE_VER
 
 RUN \
-    git clone https://github.com/alpinelinux/aports /tmp/aports -b ${ALPINE_VER}-stable --depth=1 && \
-    PKG_SRC_DIR=/tmp/aports/non-free/unrar && \
-    PKG_DST_DIR=/unrar-build && \
-    mkdir "$PKG_DST_DIR" && \
-    /bin/start-build -r && \
-    tar xf /unrar-build/unrar-[0-9]*.apk -C /unrar-build
+    apk add --no-cache \
+        alpine-sdk \
+        bash \
+        shadow \
+        sudo \
+        su-exec \
+        openssl
+
+RUN \
+    useradd -m -s /bin/bash \
+        -p $(openssl passwd -1 abc) abc && \
+    echo "abc    ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+    addgroup abc abuild && \
+    su-exec abc:abuild abuild-keygen -ain && \
+    mkdir -p /var/cache/distfiles && \
+    chmod a+w /var/cache/distfiles
+
+RUN git clone https://github.com/alpinelinux/aports /home/abc/aports -b ${ALPINE_VER}-stable --depth=1 && \
+    chown -R abc:abuild /home/abc
+
+RUN su-exec abc:abuild env APKBUILD=/home/abc/aports/non-free/unrar/APKBUILD abuild -r
+RUN mkdir /unrar-build && find /home/abc/packages -name *.apk -type f -exec tar xf {} -C /unrar-build \;
 
 
 FROM base AS builder
