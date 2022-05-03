@@ -79,6 +79,13 @@ pip install <python pkgs>
 
 Then, it will run every container start.
 
+Or, you can have a built-in script do this by setting environment variables as follows.
+
+```bash 
+-e "INSTALL_APK_PKGS=build-base python3-dev" \
+-e INSTALL_PIP_PKGS=guppy3
+```
+
 ### Custom plugins
 
 You can install custom plugins by ```FG_PLUGINS="{plugin_name_1} {plugin_name_2}"``` whose value is a space-separated list of plugin names. Currently available ones are

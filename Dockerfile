@@ -20,6 +20,35 @@ RUN \
 # 
 # BUILD
 # 
+FROM alpine:${ALPINE_VER} AS unrar
+
+ARG ALPINE_VER
+
+RUN \
+    apk add --no-cache \
+        alpine-sdk \
+        bash \
+        shadow \
+        sudo \
+        su-exec \
+        openssl
+
+RUN \
+    useradd -m -s /bin/bash \
+        -p $(openssl passwd -1 abc) abc && \
+    echo "abc    ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+    addgroup abc abuild && \
+    su-exec abc:abuild abuild-keygen -ain && \
+    mkdir -p /var/cache/distfiles && \
+    chmod a+w /var/cache/distfiles
+
+RUN git clone https://github.com/alpinelinux/aports /home/abc/aports -b ${ALPINE_VER}-stable --depth=1 && \
+    chown -R abc:abuild /home/abc
+
+RUN su-exec abc:abuild env APKBUILD=/home/abc/aports/non-free/unrar/APKBUILD abuild -r
+RUN mkdir /unrar-build && find /home/abc/packages -name *.apk -type f -exec tar xf {} -C /unrar-build \;
+
+
 FROM base AS builder
 
 COPY requirements.txt /tmp/
@@ -41,6 +70,11 @@ RUN \
 
 # copy libtorrent libs
 COPY --from=libtorrent /libtorrent-build/usr/lib/ /bar/usr/lib/
+
+# copy unrar
+COPY --from=unrar /unrar-build/usr/ /bar/usr/
+
+ADD https://raw.githubusercontent.com/by275/docker-base/main/_/etc/cont-init.d/install-pkg /bar/etc/cont-init.d/15-install-pkg
 
 # copy local files
 COPY root/ /bar/
@@ -67,8 +101,6 @@ RUN \
     apk add --no-cache \
         `# libtorrent` \
         boost-python3 libstdc++ \
-        `# rarfile` \
-        unrar \
         `# lxml` \
         libxml2 libxslt \
         `# others` \
