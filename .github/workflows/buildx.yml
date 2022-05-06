@@ -1,8 +1,7 @@
 name: docker-buildx
 
 on:
-  watch:
-    types: [started]
+  workflow_dispatch:
   schedule:
     - cron: "0 21 * * 5"
   push:
@@ -18,7 +17,7 @@ env:
 jobs:
   buildx:
     runs-on: ubuntu-20.04
-    if: github.event_name != 'pull_request' && (github.event_name != 'watch' || github.actor == github.event.repository.owner.login)
+    if: github.event_name != 'pull_request'
     steps:
       -
         name: Checkout
@@ -134,7 +133,7 @@ jobs:
 
   buildx-on-pr:
     runs-on: ubuntu-20.04
-    if: github.event_name == 'pull_request' && (github.event_name != 'watch' || github.actor == github.event.repository.owner.login)
+    if: github.event_name == 'pull_request'
     steps:
       -
         name: Checkout
