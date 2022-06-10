@@ -243,9 +243,9 @@ tempora==4.1.2
     #   portend
 tornado==6.1
     # via python-telegram-bot
-transmission-rpc==3.3.0
+transmission-rpc==3.3.2
     # via -r requirements.in
-typing-extensions==3.10.0.2
+typing-extensions==4.2.0
     # via transmission-rpc
 tzdata==2022.1
     # via
