@@ -48,7 +48,7 @@ click==8.0.4
     #   flexget
 cloudscraper==1.2.60
     # via -r requirements.in
-colorama==0.4.4
+colorama==0.4.5
     # via flexget
 commonmark==0.9.1
     # via
@@ -82,7 +82,7 @@ flask-restful==0.3.9
     # via flexget
 flask-restx==0.5.1
     # via flexget
-flexget==3.3.19
+flexget==3.3.21
     # via -r requirements.in
 future==0.18.2
     # via irc-bot
@@ -147,6 +147,8 @@ more-itertools==8.12.0
     #   flexget
     #   jaraco-classes
     #   jaraco-functools
+packaging==21.3
+    # via flexget
 plumbum==1.7.2
     # via
     #   flexget
@@ -169,6 +171,7 @@ pyparsing==2.4.7
     # via
     #   cloudscraper
     #   flexget
+    #   packaging
 pyrsistent==0.18.0
     # via
     #   flexget
