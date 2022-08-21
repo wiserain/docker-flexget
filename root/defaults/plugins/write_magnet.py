@@ -63,7 +63,10 @@ class ConvertMagnet:
         import libtorrent as lt
 
         # parameters
-        params = lt.parse_magnet_uri(magnet_uri)
+        try:
+            params = lt.parse_magnet_uri(magnet_uri)
+        except Exception as e:
+            raise plugin.PluginError('Failed to parse the uri: {}', str(e))
 
         # prevent downloading
         # https://stackoverflow.com/q/45680113

@@ -72,7 +72,7 @@ RUN \
 COPY --from=libtorrent /libtorrent-build/usr/lib/ /bar/usr/lib/
 
 # copy unrar
-COPY --from=unrar /unrar-build/usr/ /bar/usr/
+COPY --from=unrar /unrar-build/usr/bin/ /bar/usr/bin/
 
 ADD https://raw.githubusercontent.com/by275/docker-base/main/_/etc/cont-init.d/install-pkg /bar/etc/cont-init.d/15-install-pkg
 
@@ -114,7 +114,6 @@ RUN \
 
 # add default volumes
 VOLUME /config /data
-WORKDIR /config
 
 # expose port for flexget webui
 EXPOSE 5050 5050/tcp
