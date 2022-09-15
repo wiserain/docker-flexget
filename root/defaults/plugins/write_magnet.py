@@ -184,6 +184,7 @@ class ConvertMagnet:
             torrent_info.update({
                 'seeders': torrent_status.num_complete,
                 'peers': torrent_status.num_incomplete,
+                'total_wanted': torrent_status.total_wanted
             })
         else:
             raise plugin.PluginError('Timed out after {} seconds'.format(timeout))
@@ -257,7 +258,10 @@ class ConvertMagnet:
                 entry['urls'].insert(0, 'file://{}'.format(torrent_file))
 
                 # TODO: could be populate extra fields from torrent_info
-                entry['content_size'] = torrent_info['total_size']
+                if "content_size" not in entry.keys():
+                    entry["content_size"] = (
+                        round(torrent_info['total_wanted'] / 1024 ** 2)
+                    )
                 entry['seeders'] = torrent_info['seeders']
                 entry['leechers'] = torrent_info['peers']
 
