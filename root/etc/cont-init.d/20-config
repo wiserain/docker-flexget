@@ -1,5 +1,8 @@
 #!/usr/bin/with-contenv bash
 
+# in case of missing permissions, e.g. --cap-drop CAP_DAC_OVERRIDE
+chown -R root:root /config
+
 # remove config-lock
 find /config -name ".config-lock" -exec rm -f {} \;
 
