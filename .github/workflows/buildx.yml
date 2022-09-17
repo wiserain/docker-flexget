@@ -12,7 +12,7 @@ on:
 env:
   DOCKERHUB_USER: wiserain
   IMAGE_NAME: wiserain/flexget
-  ALPINE_VER: '3.15'
+  ALPINE_VER: '3.16'
 
 jobs:
   buildx:
