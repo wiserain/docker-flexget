@@ -42,8 +42,8 @@ RUN \
     mkdir -p /var/cache/distfiles && \
     chmod a+w /var/cache/distfiles
 
-RUN git clone https://github.com/alpinelinux/aports /home/abc/aports -b ${ALPINE_VER}-stable --depth=1 && \
-    chown -R abc:abuild /home/abc
+COPY unrar /home/abc/aports/non-free/unrar/
+RUN chown -R abc:abuild /home/abc
 
 RUN su-exec abc:abuild env APKBUILD=/home/abc/aports/non-free/unrar/APKBUILD abuild -r
 RUN mkdir /unrar-build && find /home/abc/packages -name *.apk -type f -exec tar xf {} -C /unrar-build \;
