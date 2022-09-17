@@ -31,6 +31,7 @@ docker run -d \
     -e FG_WEBUI_PASSWD=<desired password> \
     wiserain/flexget
 ```
+
 ### docker-compose
 
 ```yml
@@ -69,7 +70,7 @@ Most importantly, secure webui using ```FG_WEBUI_PASSWD```.
 
 ### Additional packages
 
-If there are additional packages you may want to install, create bash script with any name under ```/config/custom-cont-init.d```, for example,
+If there are additional packages you may want to install, create bash script with any name under ```/custom-cont-init.d```, for example,
 
 ```bash
 #!/usr/bin/with-contenv bash
@@ -77,11 +78,11 @@ apk add -q --no-cache <alpine pkgs>
 pip install <python pkgs>
 ```
 
-Then, it will run every container start.
+Then, it will run every container start. Please find more details [here](https://www.linuxserver.io/blog/2019-09-14-customizing-our-containers).
 
 Or, you can have a built-in script do this by setting environment variables as follows.
 
-```bash 
+```bash
 -e "INSTALL_APK_PKGS=build-base python3-dev" \
 -e INSTALL_PIP_PKGS=guppy3
 ```
