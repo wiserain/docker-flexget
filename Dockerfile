@@ -114,6 +114,7 @@ RUN \
 
 # add default volumes
 VOLUME /config /data
+WORKDIR /config
 
 # expose port for flexget webui
 EXPOSE 5050 5050/tcp
