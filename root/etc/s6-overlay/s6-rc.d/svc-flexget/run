@@ -8,7 +8,7 @@ flexget
 daemon start --autoreload-config
 "
 
-echo "[services.d] executing => $(echo $command)"
+echo "*** Executing => $(echo $command)"
 
 exec \
     s6-setuidgid abc $command

@@ -74,10 +74,20 @@ COPY --from=libtorrent /libtorrent-build/usr/lib/ /bar/usr/lib/
 # copy unrar
 COPY --from=unrar /unrar-build/usr/bin/ /bar/usr/bin/
 
-ADD https://raw.githubusercontent.com/by275/docker-base/main/_/etc/cont-init.d/install-pkg /bar/etc/cont-init.d/15-install-pkg
+ADD https://raw.githubusercontent.com/by275/docker-base/main/_/etc/cont-init.d/install-pkg /bar/etc/s6-overlay/s6-rc.d/init-install-pkg/run
 
 # copy local files
 COPY root/ /bar/
+
+RUN \
+    echo "**** permissions ****" && \
+    chmod a+x \
+        /bar/etc/s6-overlay/s6-rc.d/*/run \
+    && \
+    echo "**** s6: add services to user/contents.d ****" && \
+    mkdir -p /tmp/app/contents.d && \
+    for dir in /bar/etc/s6-overlay/s6-rc.d/*; do touch "/tmp/app/contents.d/$(basename "$dir")"; done && \
+    mv /tmp/app /bar/etc/s6-overlay/s6-rc.d/user
 
 # 
 # RELEASE
