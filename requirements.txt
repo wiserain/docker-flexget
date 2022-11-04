@@ -11,28 +11,32 @@ aniso8601==9.0.1
     #   flexget
 apscheduler==3.9.1
     # via flexget
-attrs==21.4.0
+attrs==22.1.0
     # via
     #   flexget
     #   jsonschema
+autocommand==2.2.1
+    # via
+    #   flexget
+    #   jaraco-text
 babelfish==0.6.0
     # via
     #   flexget
     #   guessit
-beautifulsoup4==4.10.0
+beautifulsoup4==4.11.1
     # via flexget
 brotli==1.0.9
     # via
     #   flask-compress
     #   flexget
-certifi==2021.10.8
+certifi==2022.9.24
     # via
     #   flexget
     #   python-telegram-bot
     #   requests
 cffi==1.15.1
     # via cryptography
-charset-normalizer==2.0.12
+charset-normalizer==2.1.1
     # via
     #   flexget
     #   requests
@@ -40,15 +44,15 @@ cheroot==8.6.0
     # via
     #   cherrypy
     #   flexget
-cherrypy==18.6.1
+cherrypy==18.8.0
     # via flexget
-click==8.0.4
+click==8.1.3
     # via
     #   flask
     #   flexget
 cloudscraper==1.2.64
     # via -r requirements.in
-colorama==0.4.5
+colorama==0.4.6
     # via flexget
 commonmark==0.9.1
     # via
@@ -62,9 +66,9 @@ decorator==5.1.1
     # via python-telegram-bot
 deluge-client==1.9.0
     # via -r requirements.in
-feedparser==6.0.8
+feedparser==6.0.10
     # via flexget
-flask==2.0.3
+flask==2.2.2
     # via
     #   flask-compress
     #   flask-cors
@@ -72,107 +76,117 @@ flask==2.0.3
     #   flask-restful
     #   flask-restx
     #   flexget
-flask-compress==1.11
+flask-compress==1.13
     # via flexget
 flask-cors==3.0.10
     # via flexget
-flask-login==0.5.0
+flask-login==0.6.2
     # via flexget
 flask-restful==0.3.9
     # via flexget
-flask-restx==0.5.1
+flask-restx==1.0.3
     # via flexget
-flexget==3.4.2
+flexget==3.5.2
     # via -r requirements.in
 future==0.18.2
     # via irc-bot
-greenlet==1.1.2
+greenlet==2.0.0.post0
     # via
     #   flexget
     #   sqlalchemy
-guessit==3.4.3
+guessit==3.5.0
     # via flexget
 html5lib==1.1
     # via flexget
-idna==3.3
+idna==3.4
     # via
     #   flexget
     #   requests
-irc-bot==1.0.40
-    # via -r requirements.in
-itsdangerous==2.0.1
-    # via
-    #   flask
-    #   flexget
-jaraco-classes==3.2.1
-    # via
-    #   flexget
-    #   jaraco-collections
-jaraco-collections==3.4.0
-    # via
-    #   cherrypy
-    #   flexget
-jaraco-context==4.1.1
+inflect==6.0.2
     # via
     #   flexget
     #   jaraco-text
-jaraco-functools==3.4.0
+irc-bot==1.0.40
+    # via -r requirements.in
+itsdangerous==2.1.2
+    # via
+    #   flask
+    #   flexget
+jaraco-classes==3.2.3
+    # via
+    #   flexget
+    #   jaraco-collections
+jaraco-collections==3.7.0
+    # via
+    #   cherrypy
+    #   flexget
+jaraco-context==4.1.2
+    # via
+    #   flexget
+    #   jaraco-text
+jaraco-functools==3.5.2
     # via
     #   cheroot
     #   flexget
     #   jaraco-text
     #   tempora
-jaraco-text==3.7.0
+jaraco-text==3.10.0
     # via
     #   flexget
     #   jaraco-collections
-jinja2==3.0.3
+jinja2==3.1.2
     # via
     #   flask
     #   flexget
-jsonschema==3.2.0
+jsonschema==4.17.0
     # via
     #   flask-restx
     #   flexget
 loguru==0.6.0
     # via flexget
-markupsafe==2.0.1
+markupsafe==2.1.1
     # via
     #   flexget
     #   jinja2
-more-itertools==8.12.0
+    #   werkzeug
+more-itertools==9.0.0
     # via
     #   cheroot
     #   cherrypy
     #   flexget
     #   jaraco-classes
     #   jaraco-functools
+    #   jaraco-text
 packaging==21.3
     # via flexget
-plumbum==1.7.2
+plumbum==1.8.0
     # via
     #   flexget
     #   rpyc
-portend==3.0.0
+portend==3.1.0
     # via
     #   cherrypy
     #   flexget
-psutil==5.9.0
+psutil==5.9.3
     # via flexget
 pycparser==2.21
     # via cffi
-pygments==2.11.2
+pydantic==1.10.2
+    # via
+    #   flexget
+    #   inflect
+pygments==2.13.0
     # via
     #   flexget
     #   rich
 pynzb==0.1.0
     # via flexget
-pyparsing==2.4.7
+pyparsing==3.0.9
     # via
     #   cloudscraper
     #   flexget
     #   packaging
-pyrsistent==0.18.0
+pyrsistent==0.19.2
     # via
     #   flexget
     #   jsonschema
@@ -186,7 +200,7 @@ python-dateutil==2.8.2
     #   guessit
 python-telegram-bot==12.8
     # via -r requirements.in
-pytz==2022.1
+pytz==2022.6
     # via
     #   apscheduler
     #   flask-restful
@@ -205,7 +219,7 @@ rebulk==3.1.0
     # via
     #   flexget
     #   guessit
-requests==2.27.1
+requests==2.28.1
     # via
     #   cloudscraper
     #   flexget
@@ -213,9 +227,9 @@ requests==2.27.1
     #   transmission-rpc
 requests-toolbelt==0.10.1
     # via cloudscraper
-rich==12.0.1
+rich==12.6.0
     # via flexget
-rpyc==5.0.1
+rpyc==5.2.3
     # via flexget
 sgmllib3k==1.0.0
     # via
@@ -228,19 +242,17 @@ six==1.16.0
     #   cryptography
     #   flask-cors
     #   flask-restful
-    #   flask-restx
     #   flexget
     #   html5lib
     #   irc-bot
-    #   jsonschema
     #   python-dateutil
-soupsieve==2.3.1
+soupsieve==2.3.2.post1
     # via
     #   beautifulsoup4
     #   flexget
-sqlalchemy==1.4.32
+sqlalchemy==1.4.42
     # via flexget
-tempora==4.1.2
+tempora==5.0.2
     # via
     #   flexget
     #   portend
@@ -249,16 +261,19 @@ tornado==6.2
 transmission-rpc==3.4.0
     # via -r requirements.in
 typing-extensions==4.4.0
-    # via transmission-rpc
-tzdata==2022.1
+    # via
+    #   flexget
+    #   pydantic
+    #   transmission-rpc
+tzdata==2022.6
     # via
     #   flexget
     #   pytz-deprecation-shim
-tzlocal==4.1
+tzlocal==4.2
     # via
     #   apscheduler
     #   flexget
-urllib3==1.26.9
+urllib3==1.26.12
     # via
     #   flexget
     #   requests
@@ -266,9 +281,10 @@ webencodings==0.5.1
     # via
     #   flexget
     #   html5lib
-werkzeug==2.0.3
+werkzeug==2.2.2
     # via
     #   flask
+    #   flask-login
     #   flask-restx
     #   flexget
 zc-lockfile==2.0
