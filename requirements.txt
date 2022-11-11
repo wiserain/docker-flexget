@@ -50,7 +50,7 @@ click==8.1.3
     # via
     #   flask
     #   flexget
-cloudscraper==1.2.64
+cloudscraper==1.2.65
     # via -r requirements.in
 colorama==0.4.6
     # via flexget
@@ -86,7 +86,7 @@ flask-restful==0.3.9
     # via flexget
 flask-restx==1.0.3
     # via flexget
-flexget==3.5.2
+flexget==3.5.5
     # via -r requirements.in
 future==0.18.2
     # via irc-bot
@@ -116,7 +116,7 @@ jaraco-classes==3.2.3
     # via
     #   flexget
     #   jaraco-collections
-jaraco-collections==3.7.0
+jaraco-collections==3.8.0
     # via
     #   cherrypy
     #   flexget
@@ -229,7 +229,7 @@ requests-toolbelt==0.10.1
     # via cloudscraper
 rich==12.6.0
     # via flexget
-rpyc==5.2.3
+rpyc==5.1.0
     # via flexget
 sgmllib3k==1.0.0
     # via
@@ -250,7 +250,7 @@ soupsieve==2.3.2.post1
     # via
     #   beautifulsoup4
     #   flexget
-sqlalchemy==1.4.42
+sqlalchemy==1.4.43
     # via flexget
 tempora==5.0.2
     # via
