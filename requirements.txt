@@ -9,13 +9,13 @@ aniso8601==9.0.1
     #   flask-restful
     #   flask-restx
     #   flexget
-apscheduler==3.9.1
+apscheduler==3.9.1.post1
     # via flexget
 attrs==22.1.0
     # via
     #   flexget
     #   jsonschema
-autocommand==2.2.1
+autocommand==2.2.2
     # via
     #   flexget
     #   jaraco-text
@@ -29,7 +29,7 @@ brotli==1.0.9
     # via
     #   flask-compress
     #   flexget
-certifi==2022.9.24
+certifi==2022.12.7
     # via
     #   flexget
     #   python-telegram-bot
@@ -40,7 +40,7 @@ charset-normalizer==2.1.1
     # via
     #   flexget
     #   requests
-cheroot==8.6.0
+cheroot==9.0.0
     # via
     #   cherrypy
     #   flexget
@@ -86,11 +86,11 @@ flask-restful==0.3.9
     # via flexget
 flask-restx==1.0.3
     # via flexget
-flexget==3.5.9
+flexget==3.5.11
     # via -r requirements.in
 future==0.18.2
     # via irc-bot
-greenlet==2.0.0.post0
+greenlet==2.0.1
     # via
     #   flexget
     #   sqlalchemy
@@ -120,7 +120,7 @@ jaraco-collections==3.8.0
     # via
     #   cherrypy
     #   flexget
-jaraco-context==4.1.2
+jaraco-context==4.2.0
     # via
     #   flexget
     #   jaraco-text
@@ -130,7 +130,7 @@ jaraco-functools==3.5.2
     #   flexget
     #   jaraco-text
     #   tempora
-jaraco-text==3.10.0
+jaraco-text==3.11.0
     # via
     #   flexget
     #   jaraco-collections
@@ -138,7 +138,7 @@ jinja2==3.1.2
     # via
     #   flask
     #   flexget
-jsonschema==4.17.0
+jsonschema==4.17.3
     # via
     #   flask-restx
     #   flexget
@@ -157,7 +157,7 @@ more-itertools==9.0.0
     #   jaraco-classes
     #   jaraco-functools
     #   jaraco-text
-packaging==21.3
+packaging==22.0
     # via flexget
 plumbum==1.8.0
     # via
@@ -167,7 +167,7 @@ portend==3.1.0
     # via
     #   cherrypy
     #   flexget
-psutil==5.9.3
+psutil==5.9.4
     # via flexget
 pycparser==2.21
     # via cffi
@@ -185,7 +185,6 @@ pyparsing==3.0.9
     # via
     #   cloudscraper
     #   flexget
-    #   packaging
 pyrsistent==0.19.2
     # via
     #   flexget
@@ -250,9 +249,9 @@ soupsieve==2.3.2.post1
     # via
     #   beautifulsoup4
     #   flexget
-sqlalchemy==1.4.43
+sqlalchemy==1.4.45
     # via flexget
-tempora==5.0.2
+tempora==5.1.0
     # via
     #   flexget
     #   portend
@@ -265,7 +264,7 @@ typing-extensions==4.4.0
     #   flexget
     #   pydantic
     #   transmission-rpc
-tzdata==2022.6
+tzdata==2022.7
     # via
     #   flexget
     #   pytz-deprecation-shim
@@ -273,7 +272,7 @@ tzlocal==4.2
     # via
     #   apscheduler
     #   flexget
-urllib3==1.26.12
+urllib3==1.26.13
     # via
     #   flexget
     #   requests
