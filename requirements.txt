@@ -50,7 +50,7 @@ click==8.1.3
     # via
     #   flask
     #   flexget
-cloudscraper==1.2.67
+cloudscraper==1.2.68
     # via -r requirements.in
 colorama==0.4.6
     # via flexget
@@ -88,7 +88,7 @@ flask-restx==1.0.3
     # via flexget
 flexget==3.5.17
     # via -r requirements.in
-future==0.18.2
+future==0.18.3
     # via irc-bot
 greenlet==2.0.1
     # via
