@@ -16,7 +16,7 @@ env:
 
 jobs:
   buildx:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     if: github.event_name != 'pull_request'
     steps:
       -
@@ -123,7 +123,7 @@ jobs:
           path: requirements.txt
 
   buildx-on-pr:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     if: github.event_name == 'pull_request'
     steps:
       -
