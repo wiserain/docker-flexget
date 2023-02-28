@@ -6,7 +6,7 @@ cloudscraper
     # plugin: cfscraper
 rarfile
     # plugin: decompress
-transmission-rpc
+transmission-rpc<4.0
 deluge-client
 irc-bot
     # plugin: others
