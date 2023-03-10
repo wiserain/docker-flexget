@@ -86,7 +86,7 @@ flask-restful==0.3.9
     # via flexget
 flask-restx==1.0.3
     # via flexget
-flexget==3.5.29
+flexget==3.5.30
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -228,7 +228,7 @@ requests-toolbelt==0.10.1
     # via cloudscraper
 rich==12.6.0
     # via flexget
-rpyc==5.1.0
+rpyc==5.3.1
     # via flexget
 sgmllib3k==1.0.0
     # via
