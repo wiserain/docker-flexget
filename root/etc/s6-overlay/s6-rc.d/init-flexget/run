@@ -15,7 +15,7 @@ else
 fi
 
 # install custom plugins
-if [[ ! -z "${FG_PLUGINS}" ]]; then
+if [[ -n "${FG_PLUGINS:-}" ]]; then
   mkdir -p /config/plugins
   for plugin_name in ${FG_PLUGINS}; do
     plugin_src="/defaults/plugins/${plugin_name}.py"
@@ -36,7 +36,7 @@ if [[ ! -z "${FG_PLUGINS}" ]]; then
 fi
 
 # set FG_WEBUI_PASSWD
-if [[ ! -z "${FG_WEBUI_PASSWD}" ]]; then
+if [[ -n "${FG_WEBUI_PASSWD:-}" ]]; then
   echo "*** Setting flexget web password"
   if ! flexget -c /config/config.yml --loglevel ERROR web passwd "${FG_WEBUI_PASSWD}" | \
     tee /dev/stderr | grep -q 'Updated password'; then
@@ -46,11 +46,11 @@ fi
 
 # permissions
 if [ "${FIX_DIR_OWNERSHIP_CONFIG}" = "1" ] || [ "${FIX_DIR_OWNERSHIP_CONFIG}" = "true" ]; then
-  find /config \! \( -uid $(id -u abc) -gid $(id -g abc) \) -print0 | \
+  find /config \! \( -uid "$(id -u abc)" -gid "$(id -g abc)" \) -print0 | \
     xargs -0 --no-run-if-empty chown -h abc:abc
 fi
 if [ "${FIX_DIR_OWNERSHIP_DATA}" = "1" ] || [ "${FIX_DIR_OWNERSHIP_DATA}" = "true" ]; then
-  find /data \! \( -uid $(id -u abc) -gid $(id -g abc) \) -print0 | \
+  find /data \! \( -uid "$(id -u abc)" -gid "$(id -g abc)" \) -print0 | \
     xargs -0 --no-run-if-empty chown -h abc:abc
 fi
 
