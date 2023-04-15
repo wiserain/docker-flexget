@@ -257,7 +257,7 @@ tempora==5.1.0
     #   portend
 tornado==6.2
     # via python-telegram-bot
-transmission-rpc==3.4.2
+transmission-rpc==4.2.0
     # via -r requirements.in
 typing-extensions==4.4.0
     # via
