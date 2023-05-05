@@ -68,7 +68,7 @@ deluge-client==1.9.0
     # via -r requirements.in
 feedparser==6.0.10
     # via flexget
-flask==2.2.2
+flask==2.2.5
     # via
     #   flask-compress
     #   flask-cors
@@ -86,7 +86,7 @@ flask-restful==0.3.9
     # via flexget
 flask-restx==1.0.3
     # via flexget
-flexget==3.6.4
+flexget==3.6.7
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -224,7 +224,7 @@ requests==2.28.1
     #   flexget
     #   requests-toolbelt
     #   transmission-rpc
-requests-toolbelt==0.10.1
+requests-toolbelt==1.0.0
     # via cloudscraper
 rich==12.6.0
     # via flexget
@@ -257,7 +257,7 @@ tempora==5.1.0
     #   portend
 tornado==6.3.1
     # via python-telegram-bot
-transmission-rpc==4.2.0
+transmission-rpc==4.2.1
     # via -r requirements.in
 typing-extensions==4.4.0
     # via
