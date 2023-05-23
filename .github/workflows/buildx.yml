@@ -1,4 +1,4 @@
-name: docker-buildx
+name: buildx
 
 on:
   workflow_dispatch:
@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - 'master'
-  pull_request:
 
 env:
   DOCKERHUB_USER: wiserain
@@ -34,34 +33,6 @@ jobs:
         name: Set up Buildx
         uses: docker/setup-buildx-action@v2
       -
-        name: Initial Buildx
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          file: Dockerfile
-          tags: ${{ env.IMAGE_NAME }}:testing
-          platforms: linux/amd64,linux/arm/v7,linux/arm64
-          build-args: |
-            ALPINE_VER=${{ env.ALPINE_VER }}
-      -
-        name: Load Built Image and Get Variables
-        id: vars
-        run: |
-          docker buildx build \
-            -t ${{ env.IMAGE_NAME }}:testing \
-            --platform=linux/amd64 \
-            --build-arg ALPINE_VER=${{ env.ALPINE_VER }} \
-            --load \
-            .
-          CID=$(docker run -d ${{ env.IMAGE_NAME }}:testing)
-          VER_FULL=$(docker exec $CID flexget -V | sed -n 1p)
-          echo "VER_FULL=$VER_FULL" >> $GITHUB_ENV
-          docker rm -f $CID
-          VER_MINOR=$(echo $VER_FULL | cut -d. -f-2)
-          echo "VER_MINOR=$VER_MINOR" >> $GITHUB_ENV
-          VER_MAJOR=$(echo $VER_FULL | cut -d. -f-1)
-          echo "VER_MAJOR=$VER_MAJOR" >> $GITHUB_ENV
-      -
         name: Login to docker.io
         uses: docker/login-action@v2
         with:
@@ -75,24 +46,80 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_PAT }}
       -
-        name: Buildx and Push
+        name: Buildx and Push (amd64)
         uses: docker/build-push-action@v4
         with:
           context: .
           file: Dockerfile
           tags: |
-            ${{ env.IMAGE_NAME }}:latest
-            ${{ env.IMAGE_NAME }}:${{ env.VER_FULL }}
-            ${{ env.IMAGE_NAME }}:${{ env.VER_MINOR }}
-            ${{ env.IMAGE_NAME }}:${{ env.VER_MAJOR }}
-            ghcr.io/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ env.VER_FULL }}
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ env.VER_MINOR }}
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ env.VER_MAJOR }}
-          platforms: linux/amd64,linux/arm/v7,linux/arm64
+            ${{ env.IMAGE_NAME }}:latest-amd64
+            ghcr.io/${{ env.IMAGE_NAME }}:latest-amd64
+          platforms: linux/amd64
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
           push: true
+          provenance: false
+      -
+        name: Buildx and Push (arm64)
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: Dockerfile
+          tags: |
+            ${{ env.IMAGE_NAME }}:latest-arm64
+            ghcr.io/${{ env.IMAGE_NAME }}:latest-arm64
+          platforms: linux/arm64
+          build-args: |
+            ALPINE_VER=${{ env.ALPINE_VER }}
+          push: true
+          provenance: false
+      -
+        name: Buildx and Push (arm)
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: Dockerfile.arm
+          tags: |
+            ${{ env.IMAGE_NAME }}:latest-arm
+            ghcr.io/${{ env.IMAGE_NAME }}:latest-arm
+          platforms: linux/arm/v7
+          build-args: |
+            ALPINE_VER=${{ env.ALPINE_VER }}
+          push: true
+          provenance: false
+      # 
+      # release
+      # 
+      -
+        name: Load Built Image and Get Variables
+        run: |
+          CID=$(docker run -d ghcr.io/${{ env.IMAGE_NAME }}:latest-amd64)
+          VER_FULL=$(docker exec $CID flexget -V | sed -n 1p)
+          echo "VER_FULL=$VER_FULL" >> $GITHUB_ENV
+          docker rm -f $CID
+          VER_MINOR=$(echo $VER_FULL | cut -d. -f-2)
+          echo "VER_MINOR=$VER_MINOR" >> $GITHUB_ENV
+          VER_MAJOR=$(echo $VER_FULL | cut -d. -f-1)
+          echo "VER_MAJOR=$VER_MAJOR" >> $GITHUB_ENV
+      - 
+        name: Create manifest and push
+        run: |
+          # docker.io
+          for tag in $(echo "latest ${{ env.VER_FULL }} ${{ env.VER_MINOR }} ${{ env.VER_MAJOR }}"); do
+            docker manifest create ${{ env.IMAGE_NAME }}:$tag \
+              ${{ env.IMAGE_NAME }}:latest-amd64 \
+              ${{ env.IMAGE_NAME }}:latest-arm64 \
+              ${{ env.IMAGE_NAME }}:latest-arm && \
+            docker manifest push ${{ env.IMAGE_NAME }}:$tag
+          done
+          # ghcr.io
+          for tag in $(echo "latest ${{ env.VER_FULL }} ${{ env.VER_MINOR }} ${{ env.VER_MAJOR }}"); do
+            docker manifest create ghcr.io/${{ env.IMAGE_NAME }}:$tag \
+              ghcr.io/${{ env.IMAGE_NAME }}:latest-amd64 \
+              ghcr.io/${{ env.IMAGE_NAME }}:latest-arm64 \
+              ghcr.io/${{ env.IMAGE_NAME }}:latest-arm && \
+            docker manifest push ghcr.io/${{ env.IMAGE_NAME }}:$tag
+          done
       -
         name: Notification
         uses: sarisia/actions-status-discord@v1
@@ -115,84 +142,6 @@ jobs:
         with:
           message: |
             Update requirements.txt
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: requirements.txt
-          path: requirements.txt
-
-  buildx-on-pr:
-    runs-on: ubuntu-22.04
-    if: github.event_name == 'pull_request'
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v3
-      -
-        name: Compile requirements.txt
-        run: |
-          docker run --rm -i -v ${PWD}:/req alpine:${{ env.ALPINE_VER }} \
-            sh -c "apk add py3-pip build-base python3-dev libffi-dev && pip install pip-tools && cd /req && pip-compile -U"
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-      -
-        name: Set up Buildx
-        uses: docker/setup-buildx-action@v2
-      -
-        name: Initial Buildx
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          file: Dockerfile
-          tags: ${{ env.IMAGE_NAME }}:testing
-          platforms: linux/amd64,linux/arm/v7,linux/arm64
-          build-args: |
-            ALPINE_VER=${{ env.ALPINE_VER }}
-      -
-        name: Login to docker.io
-        uses: docker/login-action@v2
-        if: github.actor == github.event.repository.owner.login
-        with:
-          username: ${{ env.DOCKERHUB_USER }}
-          password: ${{ secrets.DOCKERHUB_PASS }}
-      -
-        name: Login to ghcr.io
-        uses: docker/login-action@v2
-        if: github.actor == github.event.repository.owner.login
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GHCR_PAT }}
-      -
-        name: Buildx and Push
-        uses: docker/build-push-action@v4
-        if: github.actor == github.event.repository.owner.login
-        with:
-          context: .
-          file: Dockerfile
-          tags: |
-            ${{ env.IMAGE_NAME }}:testing
-            ${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}
-            ghcr.io/${{ env.IMAGE_NAME }}:testing
-            ghcr.io/${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}
-          platforms: linux/amd64,linux/arm/v7,linux/arm64
-          build-args: |
-            ALPINE_VER=${{ env.ALPINE_VER }}
-          push: true
-      -
-        name: Notification
-        uses: sarisia/actions-status-discord@v1
-        if: always() && github.actor == github.event.repository.owner.login
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          status: ${{ job.status }}
-          description: |
-            ${{ env.IMAGE_NAME }}:testing
-            ${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}
-            ghcr.io/${{ env.IMAGE_NAME }}:testing
-            ghcr.io/${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         if: failure()
