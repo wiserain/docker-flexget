@@ -1,0 +1,135 @@
+name: buildx-on-pr
+
+on:
+  pull_request:
+
+env:
+  DOCKERHUB_USER: wiserain
+  IMAGE_NAME: ghcr.io/wiserain/flexget
+  ALPINE_VER: '3.17'
+
+jobs:
+  buildx-on-pr:
+    runs-on: ubuntu-22.04
+    if: github.event_name == 'pull_request'
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Compile requirements.txt
+        run: |
+          docker run --rm -i -v ${PWD}:/req alpine:${{ env.ALPINE_VER }} \
+            sh -c "apk add py3-pip build-base python3-dev libffi-dev && pip install pip-tools && cd /req && pip-compile -U"
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      -
+        name: Set up Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Initial Buildx (amd64)
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: Dockerfile
+          tags: ${{ env.IMAGE_NAME }}:testing-amd64
+          platforms: linux/amd64
+          build-args: |
+            ALPINE_VER=${{ env.ALPINE_VER }}
+      -
+        name: Initial Buildx (arm64)
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: Dockerfile
+          tags: ${{ env.IMAGE_NAME }}:testing-arm64
+          platforms: linux/arm64
+          build-args: |
+            ALPINE_VER=${{ env.ALPINE_VER }}
+      -
+        name: Initial Buildx (arm)
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: Dockerfile.arm
+          tags: ${{ env.IMAGE_NAME }}:testing-arm
+          platforms: linux/arm/v7
+          build-args: |
+            ALPINE_VER=${{ env.ALPINE_VER }}
+      # 
+      # now only for repository owner
+      # 
+      -
+        name: Login to ghcr.io
+        uses: docker/login-action@v2
+        if: github.actor == github.event.repository.owner.login
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_PAT }}
+      -
+        name: Buildx and Push (amd64)
+        uses: docker/build-push-action@v4
+        if: github.actor == github.event.repository.owner.login
+        with:
+          context: .
+          file: Dockerfile
+          tags: ${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}-amd64
+          platforms: linux/amd64
+          build-args: |
+            ALPINE_VER=${{ env.ALPINE_VER }}
+          push: true
+          provenance: false
+      -
+        name: Buildx and Push (arm64)
+        uses: docker/build-push-action@v4
+        if: github.actor == github.event.repository.owner.login
+        with:
+          context: .
+          file: Dockerfile
+          tags: ${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}-arm64
+          platforms: linux/arm64
+          build-args: |
+            ALPINE_VER=${{ env.ALPINE_VER }}
+          push: true
+          provenance: false
+      -
+        name: Buildx and Push (arm)
+        uses: docker/build-push-action@v4
+        if: github.actor == github.event.repository.owner.login
+        with:
+          context: .
+          file: Dockerfile.arm
+          tags: ${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}-arm
+          platforms: linux/arm/v7
+          build-args: |
+            ALPINE_VER=${{ env.ALPINE_VER }}
+          push: true
+          provenance: false
+      - 
+        name: Create manifest and push for testing
+        run: |
+          for tag in $(echo "testing ${{ github.event.pull_request.number }}"); do
+            docker manifest create ${{ env.IMAGE_NAME }}:$tag \
+              ${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}-amd64 \
+              ${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}-arm64 \
+              ${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}-arm && \
+            docker manifest push ${{ env.IMAGE_NAME }}:$tag
+          done
+      -
+        name: Notification
+        uses: sarisia/actions-status-discord@v1
+        if: always() && github.actor == github.event.repository.owner.login
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          status: ${{ job.status }}
+          description: |
+            ${{ env.IMAGE_NAME }}:testing
+            ${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: requirements.txt
+          path: requirements.txt
