@@ -58,10 +58,8 @@ commonmark==0.9.1
     # via
     #   flexget
     #   rich
-cryptography==3.3.2
-    # via
-    #   -r requirements.in
-    #   python-telegram-bot
+cryptography==40.0.2
+    # via python-telegram-bot
 decorator==5.1.1
     # via python-telegram-bot
 deluge-client==1.9.0
@@ -238,7 +236,6 @@ six==1.16.0
     # via
     #   apscheduler
     #   cheroot
-    #   cryptography
     #   flask-cors
     #   flask-restful
     #   flexget
