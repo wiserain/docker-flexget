@@ -2,7 +2,7 @@
 # Contributor: Carlo Landmeter <clandmeter@alpinelinux.org>
 # Maintainer: Natanael Copa <ncopa@alpinelinux.org>
 pkgname=unrar
-pkgver=6.1.7
+pkgver=6.2.6
 pkgrel=0
 pkgdesc="RAR uncompression program"
 url="https://www.rarlab.com/rar_add.htm"
@@ -26,6 +26,6 @@ package() {
 }
 
 sha512sums="
-b1a95358ff66b0e049597bbc4e1786d0bc909a8aff4aca94ee793d0d5a3c8b052eb347d88f44b6bc2e6231e777f1b711c198711118ae9ffbe8db2f72e7fbe846  unrarsrc-6.1.7.tar.gz
-2caa145c2fb1257c3cea1f552cba7bf8a3f8772c65c9751aad3fb5bec4957c7fefdb7bbb016c94b73d4778cef76460ddc2abafa8a12d09ebd24bcb6f1dcb263c  makefile.patch
+c2dc4176426dd73cfcbb3af135f8eb44ad455ea29e0e45b23e6987dd33658530444e35598fd5ffae0e27a466a9e01daf4b167edd69a686b62fd3b5a0f3bf81f6  unrarsrc-6.2.6.tar.gz
+25cbf02d5afe47666e820d858959131b8b27772b922605852702767fbd47f60cd5a7cd79a85f471cbeb1cb64bf73fa50e72df650d1a0751c73aee613d0a16877  makefile.patch
 "

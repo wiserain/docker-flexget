@@ -19,12 +19,3 @@ diff -upr unrar.orig/makefile unrar/makefile
  DESTDIR=/usr
  
  # Linux using LCC
-@@ -140,7 +141,7 @@ uninstall:	uninstall-unrar
- clean:
- 	@rm -f *.o *.bak *~
- 
--unrar:	clean $(OBJECTS) $(UNRAR_OBJ)
-+unrar:	$(OBJECTS) $(UNRAR_OBJ)
- 	@rm -f unrar
- 	$(LINK) -o unrar $(LDFLAGS) $(OBJECTS) $(UNRAR_OBJ) $(LIBS)	
- 	$(STRIP) unrar
