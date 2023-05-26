@@ -9,7 +9,7 @@ aniso8601==9.0.1
     #   flask-restful
     #   flask-restx
     #   flexget
-apscheduler==3.9.1.post1
+apscheduler==3.10.1
     # via flexget
 attrs==22.1.0
     # via
@@ -84,7 +84,7 @@ flask-restful==0.3.9
     # via flexget
 flask-restx==1.0.3
     # via flexget
-flexget==3.7.0
+flexget==3.7.2
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -216,7 +216,7 @@ rebulk==3.1.0
     # via
     #   flexget
     #   guessit
-requests==2.28.1
+requests==2.31.0
     # via
     #   cloudscraper
     #   flexget
@@ -246,7 +246,7 @@ soupsieve==2.3.2.post1
     # via
     #   beautifulsoup4
     #   flexget
-sqlalchemy==1.4.45
+sqlalchemy==2.0.15
     # via flexget
 tempora==5.1.0
     # via
@@ -260,6 +260,7 @@ typing-extensions==4.4.0
     # via
     #   flexget
     #   pydantic
+    #   sqlalchemy
     #   transmission-rpc
 tzdata==2022.7
     # via
@@ -287,7 +288,7 @@ zc-lockfile==2.0
     # via
     #   cherrypy
     #   flexget
-zxcvbn-python==4.4.24
+zxcvbn==4.4.28
     # via flexget
 
 # The following packages are considered to be unsafe in a requirements file:
