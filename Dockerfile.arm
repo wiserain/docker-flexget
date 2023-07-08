@@ -2,7 +2,7 @@ ARG ALPINE_VER
 ARG LIBTORRENT_VER=latest
 
 FROM ghcr.io/by275/libtorrent:${LIBTORRENT_VER}-alpine${ALPINE_VER} AS libtorrent
-FROM ghcr.io/linuxserver/baseimage-alpine:${ALPINE_VER} AS base
+FROM ghcr.io/linuxserver/baseimage-alpine:arm32v7-${ALPINE_VER} AS base
 
 RUN \
     echo "**** install frolvlad/alpine-python3 ****" && \

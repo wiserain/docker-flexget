@@ -54,7 +54,6 @@ jobs:
           context: .
           file: Dockerfile.arm
           tags: ${{ env.IMAGE_NAME }}:testing-arm
-          platforms: linux/arm/v7
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
       # 
@@ -102,7 +101,6 @@ jobs:
           context: .
           file: Dockerfile.arm
           tags: ${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}-arm
-          platforms: linux/arm/v7
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
           push: true

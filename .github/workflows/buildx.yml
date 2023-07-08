@@ -82,7 +82,6 @@ jobs:
           tags: |
             ${{ env.IMAGE_NAME }}:latest-arm
             ghcr.io/${{ env.IMAGE_NAME }}:latest-arm
-          platforms: linux/arm/v7
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
           push: true
