@@ -62,13 +62,13 @@ jobs:
           echo "VER_MAJOR=$VER_MAJOR" >> $GITHUB_ENV
       -
         name: Login to docker.io
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ env.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PASS }}
       -
         name: Login to ghcr.io
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}

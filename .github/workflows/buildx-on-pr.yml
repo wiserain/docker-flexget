@@ -42,7 +42,7 @@ jobs:
       # 
       -
         name: Login to ghcr.io
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         if: github.actor == github.event.repository.owner.login
         with:
           registry: ghcr.io
