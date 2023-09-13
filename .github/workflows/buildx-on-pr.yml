@@ -29,7 +29,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
       -
         name: Initial Buildx
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: Dockerfile
@@ -50,7 +50,7 @@ jobs:
           password: ${{ secrets.GHCR_PAT }}
       -
         name: Buildx and Push
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         if: github.actor == github.event.repository.owner.login
         with:
           context: .
