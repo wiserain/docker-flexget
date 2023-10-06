@@ -36,7 +36,7 @@ certifi==2023.7.22
     #   requests
 cffi==1.16.0
     # via cryptography
-charset-normalizer==3.2.0
+charset-normalizer==3.3.0
     # via
     #   flexget
     #   requests
@@ -80,7 +80,7 @@ flask-restful==0.3.10
     # via flexget
 flask-restx==1.1.0
     # via flexget
-flexget==3.9.10
+flexget==3.9.11
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -154,7 +154,7 @@ more-itertools==9.1.0
     #   flexget
     #   jaraco-functools
     #   jaraco-text
-packaging==23.1
+packaging==23.2
     # via flexget
 plumbum==1.8.2
     # via
@@ -168,7 +168,7 @@ psutil==5.9.5
     # via flexget
 pycparser==2.21
     # via cffi
-pydantic==1.10.12
+pydantic==1.10.13
     # via
     #   flexget
     #   inflect
@@ -219,7 +219,7 @@ requests==2.31.0
     #   transmission-rpc
 requests-toolbelt==1.0.0
     # via cloudscraper
-rich==13.5.3
+rich==13.6.0
     # via flexget
 rpyc==5.3.1
     # via flexget
@@ -239,7 +239,7 @@ soupsieve==2.4.1
     # via
     #   beautifulsoup4
     #   flexget
-sqlalchemy==2.0.20
+sqlalchemy==2.0.21
     # via flexget
 tempora==5.3.0
     # via
