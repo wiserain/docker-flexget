@@ -6,9 +6,12 @@
 #
 aniso8601==9.0.1
     # via
-    #   flask-restful
     #   flask-restx
     #   flexget
+annotated-types==0.6.0
+    # via
+    #   flexget
+    #   pydantic
 apscheduler==3.10.4
     # via flexget
 attrs==23.1.0
@@ -25,18 +28,22 @@ babelfish==0.6.0
     #   guessit
 beautifulsoup4==4.12.2
     # via flexget
+blinker==1.7.0
+    # via
+    #   flask
+    #   flexget
 brotli==1.1.0
     # via
     #   flask-compress
     #   flexget
-certifi==2023.7.22
+certifi==2023.11.17
     # via
     #   flexget
     #   python-telegram-bot
     #   requests
 cffi==1.16.0
     # via cryptography
-charset-normalizer==3.3.0
+charset-normalizer==3.3.2
     # via
     #   flexget
     #   requests
@@ -62,29 +69,26 @@ deluge-client==1.9.0
     # via -r requirements.in
 feedparser==6.0.10
     # via flexget
-flask==2.2.5
+flask==2.3.3
     # via
     #   flask-compress
     #   flask-cors
     #   flask-login
-    #   flask-restful
     #   flask-restx
     #   flexget
 flask-compress==1.14
     # via flexget
 flask-cors==4.0.0
     # via flexget
-flask-login==0.6.2
+flask-login==0.6.3
     # via flexget
-flask-restful==0.3.10
+flask-restx==1.2.0
     # via flexget
-flask-restx==1.1.0
-    # via flexget
-flexget==3.9.19
+flexget==3.10.1
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
-greenlet==3.0.0
+greenlet==3.0.1
     # via
     #   flexget
     #   sqlalchemy
@@ -96,7 +100,11 @@ idna==3.4
     # via
     #   flexget
     #   requests
-inflect==6.0.5
+importlib-resources==6.1.1
+    # via
+    #   flask-restx
+    #   flexget
+inflect==7.0.0
     # via
     #   flexget
     #   jaraco-text
@@ -106,7 +114,7 @@ itsdangerous==2.1.2
     # via
     #   flask
     #   flexget
-jaraco-collections==4.2.0
+jaraco-collections==4.3.0
     # via
     #   cherrypy
     #   flexget
@@ -114,7 +122,7 @@ jaraco-context==4.3.0
     # via
     #   flexget
     #   jaraco-text
-jaraco-functools==3.7.0
+jaraco-functools==4.0.0
     # via
     #   cheroot
     #   flexget
@@ -134,7 +142,7 @@ jsonschema==4.17.3
     #   flexget
 loguru==0.7.2
     # via flexget
-markdown-it-py==2.2.0
+markdown-it-py==3.0.0
     # via
     #   flexget
     #   rich
@@ -147,7 +155,7 @@ mdurl==0.1.2
     # via
     #   flexget
     #   markdown-it-py
-more-itertools==9.1.0
+more-itertools==10.1.0
     # via
     #   cheroot
     #   cherrypy
@@ -160,7 +168,7 @@ plumbum==1.8.2
     # via
     #   flexget
     #   rpyc
-portend==3.1.0
+portend==3.2.0
     # via
     #   cherrypy
     #   flexget
@@ -168,11 +176,15 @@ psutil==5.9.6
     # via flexget
 pycparser==2.21
     # via cffi
-pydantic==1.10.13
+pydantic==2.5.1
     # via
     #   flexget
     #   inflect
-pygments==2.16.1
+pydantic-core==2.14.3
+    # via
+    #   flexget
+    #   pydantic
+pygments==2.17.1
     # via
     #   flexget
     #   rich
@@ -182,7 +194,7 @@ pyparsing==3.1.1
     # via
     #   cloudscraper
     #   flexget
-pyrsistent==0.19.3
+pyrsistent==0.20.0
     # via
     #   flexget
     #   jsonschema
@@ -199,7 +211,6 @@ python-telegram-bot==12.8
 pytz==2023.3.post1
     # via
     #   apscheduler
-    #   flask-restful
     #   flask-restx
     #   flexget
     #   tempora
@@ -219,7 +230,7 @@ requests==2.31.0
     #   transmission-rpc
 requests-toolbelt==1.0.0
     # via cloudscraper
-rich==13.6.0
+rich==13.7.0
     # via flexget
 rpyc==5.3.1
     # via flexget
@@ -230,18 +241,17 @@ sgmllib3k==1.0.0
 six==1.16.0
     # via
     #   apscheduler
-    #   flask-restful
     #   flexget
     #   html5lib
     #   irc-bot
     #   python-dateutil
-soupsieve==2.4.1
+soupsieve==2.5
     # via
     #   beautifulsoup4
     #   flexget
-sqlalchemy==2.0.22
+sqlalchemy==2.0.23
     # via flexget
-tempora==5.3.0
+tempora==5.5.0
     # via
     #   flexget
     #   portend
@@ -249,17 +259,19 @@ tornado==6.3.3
     # via python-telegram-bot
 transmission-rpc==4.3.1
     # via -r requirements.in
-typing-extensions==4.7.1
+typing-extensions==4.8.0
     # via
     #   flexget
+    #   inflect
     #   pydantic
+    #   pydantic-core
     #   sqlalchemy
     #   transmission-rpc
-tzlocal==5.1
+tzlocal==5.2
     # via
     #   apscheduler
     #   flexget
-urllib3==1.26.17
+urllib3==1.26.18
     # via
     #   flexget
     #   requests
@@ -267,7 +279,7 @@ webencodings==0.5.1
     # via
     #   flexget
     #   html5lib
-werkzeug==2.2.3
+werkzeug==2.3.8
     # via
     #   flask
     #   flask-login
