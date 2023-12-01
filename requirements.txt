@@ -61,7 +61,7 @@ cloudscraper==1.2.71
     # via -r requirements.in
 colorama==0.4.6
     # via flexget
-cryptography==41.0.5
+cryptography==41.0.7
     # via python-telegram-bot
 decorator==5.1.1
     # via python-telegram-bot
@@ -84,7 +84,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.2.0
     # via flexget
-flexget==3.10.1
+flexget==3.10.2
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -96,7 +96,7 @@ guessit==3.7.1
     # via flexget
 html5lib==1.1
     # via flexget
-idna==3.4
+idna==3.6
     # via
     #   flexget
     #   requests
@@ -176,15 +176,15 @@ psutil==5.9.6
     # via flexget
 pycparser==2.21
     # via cffi
-pydantic==2.5.1
+pydantic==2.5.2
     # via
     #   flexget
     #   inflect
-pydantic-core==2.14.3
+pydantic-core==2.14.5
     # via
     #   flexget
     #   pydantic
-pygments==2.17.1
+pygments==2.17.2
     # via
     #   flexget
     #   rich
@@ -255,7 +255,7 @@ tempora==5.5.0
     # via
     #   flexget
     #   portend
-tornado==6.3.3
+tornado==6.4
     # via python-telegram-bot
 transmission-rpc==4.3.1
     # via -r requirements.in
