@@ -46,8 +46,8 @@ jobs:
         if: github.actor == github.event.repository.owner.login
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GHCR_PAT }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Buildx and Push
         uses: docker/build-push-action@v5
