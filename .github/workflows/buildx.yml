@@ -65,14 +65,14 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ env.DOCKERHUB_USER }}
-          password: ${{ secrets.DOCKERHUB_PASS }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Login to ghcr.io
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GHCR_PAT }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       # 
       # release
       # 
