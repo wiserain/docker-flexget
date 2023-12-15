@@ -73,7 +73,7 @@ jobs:
             ghcr.io/${{ env.IMAGE_NAME }}:testing
             ghcr.io/${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: requirements.txt
