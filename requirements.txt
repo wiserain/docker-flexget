@@ -52,7 +52,7 @@ cheroot==10.0.0
     # via
     #   cherrypy
     #   flexget
-cherrypy==18.8.0
+cherrypy==18.9.0
     # via flexget
 click==8.1.7
     # via
@@ -85,15 +85,15 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.10.6
+flexget==3.11.3
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
-greenlet==3.0.2
+greenlet==3.0.3
     # via
     #   flexget
     #   sqlalchemy
-guessit==3.7.1
+guessit==3.8.0
     # via flexget
 html5lib==1.1
     # via flexget
@@ -169,6 +169,8 @@ more-itertools==10.1.0
     #   jaraco-text
 packaging==23.2
     # via flexget
+pendulum==3.0.0
+    # via flexget
 plumbum==1.8.2
     # via
     #   flexget
@@ -177,15 +179,15 @@ portend==3.2.0
     # via
     #   cherrypy
     #   flexget
-psutil==5.9.6
+psutil==5.9.7
     # via flexget
 pycparser==2.21
     # via cffi
-pydantic==2.5.2
+pydantic==2.5.3
     # via
     #   flexget
     #   inflect
-pydantic-core==2.14.5
+pydantic-core==2.14.6
     # via
     #   flexget
     #   pydantic
@@ -207,6 +209,8 @@ python-dateutil==2.8.2
     # via
     #   flexget
     #   guessit
+    #   pendulum
+    #   time-machine
 python-telegram-bot==12.8
     # via -r requirements.in
 pytz==2023.3.post1
@@ -238,7 +242,7 @@ requests-toolbelt==1.0.0
     # via cloudscraper
 rich==13.7.0
     # via flexget
-rpds-py==0.13.2
+rpds-py==0.15.2
     # via
     #   flexget
     #   jsonschema
@@ -266,6 +270,8 @@ tempora==5.5.0
     # via
     #   flexget
     #   portend
+time-machine==2.13.0
+    # via pendulum
 tornado==6.4
     # via python-telegram-bot
 transmission-rpc==4.3.1
@@ -278,6 +284,10 @@ typing-extensions==4.9.0
     #   pydantic-core
     #   sqlalchemy
     #   transmission-rpc
+tzdata==2023.3
+    # via
+    #   flexget
+    #   pendulum
 tzlocal==5.2
     # via
     #   apscheduler
