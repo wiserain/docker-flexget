@@ -14,7 +14,7 @@ annotated-types==0.6.0
     #   pydantic
 apscheduler==3.10.4
     # via flexget
-attrs==23.1.0
+attrs==23.2.0
     # via
     #   flexget
     #   jsonschema
@@ -85,7 +85,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.11.3
+flexget==3.11.6
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -141,7 +141,7 @@ jsonschema==4.20.0
     # via
     #   flask-restx
     #   flexget
-jsonschema-specifications==2023.11.2
+jsonschema-specifications==2023.12.1
     # via
     #   flexget
     #   jsonschema
@@ -242,7 +242,7 @@ requests-toolbelt==1.0.0
     # via cloudscraper
 rich==13.7.0
     # via flexget
-rpds-py==0.15.2
+rpds-py==0.16.2
     # via
     #   flexget
     #   jsonschema
@@ -264,7 +264,7 @@ soupsieve==2.5
     # via
     #   beautifulsoup4
     #   flexget
-sqlalchemy==2.0.23
+sqlalchemy==2.0.24
     # via flexget
 tempora==5.5.0
     # via
@@ -284,7 +284,7 @@ typing-extensions==4.9.0
     #   pydantic-core
     #   sqlalchemy
     #   transmission-rpc
-tzdata==2023.3
+tzdata==2023.4
     # via
     #   flexget
     #   pendulum
