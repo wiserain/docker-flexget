@@ -6,7 +6,7 @@ on:
 env:
   DOCKERHUB_USER: wiserain
   IMAGE_NAME: ghcr.io/wiserain/flexget
-  ALPINE_VER: '3.18'
+  ALPINE_VER: '3.19'
 
 jobs:
   buildx-on-pr:
@@ -20,7 +20,7 @@ jobs:
         name: Compile requirements.txt
         run: |
           docker run --rm -i -v ${PWD}:/req alpine:${{ env.ALPINE_VER }} \
-            sh -c "apk add py3-pip build-base python3-dev libffi-dev && pip install pip-tools && cd /req && pip-compile -U"
+            sh -c "apk add py3-pip build-base python3-dev libffi-dev && rm /usr/lib/python*/EXTERNALLY-MANAGED && pip install pip-tools && cd /req && pip-compile -U"
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
