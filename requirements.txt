@@ -62,7 +62,7 @@ cloudscraper==1.2.71
     # via -r requirements.in
 colorama==0.4.6
     # via flexget
-cryptography==42.0.4
+cryptography==42.0.5
     # via python-telegram-bot
 decorator==5.1.1
     # via python-telegram-bot
