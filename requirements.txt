@@ -85,7 +85,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.11.28
+flexget==3.11.29
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
