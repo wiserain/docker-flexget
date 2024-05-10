@@ -62,7 +62,7 @@ cloudscraper==1.2.71
     # via -r requirements.in
 colorama==0.4.6
     # via flexget
-cryptography==42.0.5
+cryptography==42.0.7
     # via python-telegram-bot
 decorator==5.1.1
     # via python-telegram-bot
@@ -79,13 +79,13 @@ flask==3.0.0
     #   flexget
 flask-compress==1.14
     # via flexget
-flask-cors==4.0.0
+flask-cors==4.0.1
     # via flexget
 flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.11.30
+flexget==3.11.33
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -133,7 +133,7 @@ jaraco-text==3.12.0
     # via
     #   flexget
     #   jaraco-collections
-jinja2==3.1.3
+jinja2==3.1.4
     # via
     #   flask
     #   flexget
@@ -274,7 +274,7 @@ time-machine==2.14.1
     # via pendulum
 tornado==6.4
     # via python-telegram-bot
-transmission-rpc==7.0.4
+transmission-rpc==7.0.5
     # via -r requirements.in
 typing-extensions==4.9.0
     # via
@@ -300,7 +300,7 @@ webencodings==0.5.1
     # via
     #   flexget
     #   html5lib
-werkzeug==3.0.1
+werkzeug==3.0.3
     # via
     #   flask
     #   flask-login
