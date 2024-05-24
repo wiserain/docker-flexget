@@ -85,7 +85,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.11.33
+flexget==3.11.34
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -232,7 +232,7 @@ referencing==0.32.0
     #   flexget
     #   jsonschema
     #   jsonschema-specifications
-requests==2.31.0
+requests==2.32.1
     # via
     #   cloudscraper
     #   flexget
@@ -274,7 +274,7 @@ time-machine==2.14.1
     # via pendulum
 tornado==6.4
     # via python-telegram-bot
-transmission-rpc==7.0.5
+transmission-rpc==7.0.6
     # via -r requirements.in
 typing-extensions==4.9.0
     # via
