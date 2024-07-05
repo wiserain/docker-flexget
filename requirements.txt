@@ -270,7 +270,7 @@ tempora==5.5.0
     # via
     #   flexget
     #   portend
-time-machine==2.14.1
+time-machine==2.14.2
     # via pendulum
 tornado==6.4.1
     # via python-telegram-bot
