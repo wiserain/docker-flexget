@@ -42,7 +42,7 @@ certifi==2023.11.17
     #   flexget
     #   python-telegram-bot
     #   requests
-cffi==1.16.0
+cffi==1.17.0
     # via cryptography
 charset-normalizer==3.3.2
     # via
@@ -85,7 +85,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.11.41
+flexget==3.11.42
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -270,7 +270,7 @@ tempora==5.5.0
     # via
     #   flexget
     #   portend
-time-machine==2.14.2
+time-machine==2.15.0
     # via pendulum
 tornado==6.4.1
     # via python-telegram-bot
