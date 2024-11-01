@@ -44,7 +44,7 @@ certifi==2024.8.30
     #   requests
 cffi==1.17.1
     # via cryptography
-charset-normalizer==3.3.2
+charset-normalizer==3.4.0
     # via
     #   flexget
     #   requests
@@ -85,11 +85,11 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.11.49
+flexget==3.11.52
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
-greenlet==3.0.3
+greenlet==3.1.1
     # via
     #   flexget
     #   sqlalchemy
@@ -97,7 +97,7 @@ guessit==3.8.0
     # via flexget
 html5lib==1.1
     # via flexget
-idna==3.8
+idna==3.10
     # via
     #   flexget
     #   requests
@@ -119,7 +119,7 @@ jaraco-context==6.0.1
     # via
     #   flexget
     #   jaraco-text
-jaraco-functools==4.0.2
+jaraco-functools==4.1.0
     # via
     #   cheroot
     #   flexget
@@ -167,7 +167,7 @@ packaging==24.1
     # via flexget
 pendulum==3.0.0
     # via flexget
-plumbum==1.8.3
+plumbum==1.9.0
     # via
     #   flexget
     #   rpyc
@@ -175,7 +175,7 @@ portend==3.2.0
     # via
     #   cherrypy
     #   flexget
-psutil==6.0.0
+psutil==6.1.0
     # via flexget
 pycparser==2.22
     # via cffi
@@ -202,7 +202,7 @@ python-dateutil==2.9.0.post0
     #   time-machine
 python-telegram-bot==12.8
     # via -r requirements.in
-pytz==2024.1
+pytz==2024.2
     # via
     #   apscheduler
     #   flask-restx
@@ -228,14 +228,14 @@ requests==2.32.3
     #   transmission-rpc
 requests-toolbelt==1.0.0
     # via cloudscraper
-rich==13.8.0
+rich==13.9.3
     # via flexget
 rpds-py==0.20.0
     # via
     #   flexget
     #   jsonschema
     #   referencing
-rpyc==6.0.0
+rpyc==6.0.1
     # via flexget
 sgmllib3k==1.0.0
     # via
@@ -252,7 +252,7 @@ soupsieve==2.6
     # via
     #   beautifulsoup4
     #   flexget
-sqlalchemy==2.0.34
+sqlalchemy==2.0.36
     # via flexget
 tempora==5.7.0
     # via
@@ -269,7 +269,7 @@ typing-extensions==4.12.2
     #   flexget
     #   sqlalchemy
     #   transmission-rpc
-tzdata==2024.1
+tzdata==2024.2
     # via
     #   flexget
     #   pendulum
@@ -285,7 +285,7 @@ webencodings==0.5.1
     # via
     #   flexget
     #   html5lib
-werkzeug==3.0.4
+werkzeug==3.0.6
     # via
     #   flask
     #   flask-login
