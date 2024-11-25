@@ -1,4 +1,4 @@
-ARG ALPINE_VER
+ARG ALPINE_VER=3.19
 ARG LIBTORRENT_VER=latest
 
 FROM ghcr.io/by275/libtorrent:${LIBTORRENT_VER}-alpine${ALPINE_VER} AS libtorrent
@@ -95,7 +95,7 @@ RUN \
 # 
 FROM base
 LABEL maintainer="wiserain"
-LABEL org.opencontainers.image.source https://github.com/wiserain/docker-flexget
+LABEL org.opencontainers.image.source=https://github.com/wiserain/docker-flexget
 
 ENV \
     TZ=Etc/UTC \
