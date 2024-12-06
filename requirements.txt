@@ -8,7 +8,7 @@ aniso8601==9.0.1
     # via
     #   flask-restx
     #   flexget
-apscheduler==3.10.4
+apscheduler==3.11.0
     # via flexget
 attrs==24.2.0
     # via
@@ -19,7 +19,7 @@ autocommand==2.2.2
     # via
     #   flexget
     #   jaraco-text
-babelfish==0.6.1
+babelfish==0.6.0
     # via
     #   flexget
     #   guessit
@@ -29,7 +29,7 @@ backports-tarfile==1.2.0
     #   jaraco-context
 beautifulsoup4==4.12.3
     # via flexget
-blinker==1.8.2
+blinker==1.9.0
     # via
     #   flask
     #   flexget
@@ -70,14 +70,14 @@ deluge-client==1.10.2
     # via -r requirements.in
 feedparser==6.0.11
     # via flexget
-flask==3.0.3
+flask==3.1.0
     # via
     #   flask-compress
     #   flask-cors
     #   flask-login
     #   flask-restx
     #   flexget
-flask-compress==1.15
+flask-compress==1.17
     # via flexget
 flask-cors==5.0.0
     # via flexget
@@ -85,7 +85,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.11.58
+flexget==3.12.1
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -101,7 +101,7 @@ idna==3.10
     # via
     #   flexget
     #   requests
-importlib-resources==5.13.0
+importlib-resources==6.4.5
     # via
     #   flask-restx
     #   flexget
@@ -137,7 +137,7 @@ jsonschema==4.23.0
     # via
     #   flask-restx
     #   flexget
-jsonschema-specifications==2023.12.1
+jsonschema-specifications==2024.10.1
     # via
     #   flexget
     #   jsonschema
@@ -147,7 +147,7 @@ markdown-it-py==3.0.0
     # via
     #   flexget
     #   rich
-markupsafe==2.1.5
+markupsafe==3.0.2
     # via
     #   flexget
     #   jinja2
@@ -163,7 +163,7 @@ more-itertools==10.5.0
     #   flexget
     #   jaraco-functools
     #   jaraco-text
-packaging==24.1
+packaging==24.2
     # via flexget
 pendulum==3.0.0
     # via flexget
@@ -185,7 +185,7 @@ pygments==2.18.0
     #   rich
 pynzb==0.1.0
     # via flexget
-pyparsing==3.1.4
+pyparsing==3.2.0
     # via
     #   cloudscraper
     #   flexget
@@ -204,7 +204,6 @@ python-telegram-bot==12.8
     # via -r requirements.in
 pytz==2024.2
     # via
-    #   apscheduler
     #   flask-restx
     #   flexget
 pyyaml==6.0.2
@@ -228,9 +227,9 @@ requests==2.32.3
     #   transmission-rpc
 requests-toolbelt==1.0.0
     # via cloudscraper
-rich==13.9.3
+rich==13.9.4
     # via flexget
-rpds-py==0.20.0
+rpds-py==0.21.0
     # via
     #   flexget
     #   jsonschema
@@ -243,7 +242,6 @@ sgmllib3k==1.0.0
     #   flexget
 six==1.16.0
     # via
-    #   apscheduler
     #   flexget
     #   html5lib
     #   irc-bot
@@ -285,7 +283,7 @@ webencodings==0.5.1
     # via
     #   flexget
     #   html5lib
-werkzeug==3.0.6
+werkzeug==3.1.3
     # via
     #   flask
     #   flask-login
