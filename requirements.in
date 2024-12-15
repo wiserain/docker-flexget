@@ -1,4 +1,4 @@
-python-telegram-bot==12.8
+python-telegram-bot>=21.9
 PySocks
     # plugin: telegram
 cloudscraper
