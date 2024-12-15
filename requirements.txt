@@ -8,6 +8,8 @@ aniso8601==9.0.1
     # via
     #   flask-restx
     #   flexget
+anyio==4.7.0
+    # via httpx
 apscheduler==3.11.0
     # via flexget
 attrs==24.2.0
@@ -40,10 +42,9 @@ brotli==1.1.0
 certifi==2024.8.30
     # via
     #   flexget
-    #   python-telegram-bot
+    #   httpcore
+    #   httpx
     #   requests
-cffi==1.17.1
-    # via cryptography
 charset-normalizer==3.4.0
     # via
     #   flexget
@@ -62,10 +63,6 @@ cloudscraper==1.2.71
     # via -r requirements.in
 colorama==0.4.6
     # via flexget
-cryptography==44.0.0
-    # via python-telegram-bot
-decorator==5.1.1
-    # via python-telegram-bot
 deluge-client==1.10.2
     # via -r requirements.in
 feedparser==6.0.11
@@ -85,7 +82,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.13.1
+flexget==3.13.2
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -95,11 +92,19 @@ greenlet==3.1.1
     #   sqlalchemy
 guessit==3.8.0
     # via flexget
+h11==0.14.0
+    # via httpcore
 html5lib==1.1
     # via flexget
+httpcore==1.0.7
+    # via httpx
+httpx==0.28.1
+    # via python-telegram-bot
 idna==3.10
     # via
+    #   anyio
     #   flexget
+    #   httpx
     #   requests
 importlib-resources==6.4.5
     # via
@@ -177,8 +182,6 @@ portend==3.2.0
     #   flexget
 psutil==6.1.0
     # via flexget
-pycparser==2.22
-    # via cffi
 pygments==2.18.0
     # via
     #   flexget
@@ -200,7 +203,7 @@ python-dateutil==2.9.0.post0
     #   pendulum
     #   tempora
     #   time-machine
-python-telegram-bot==12.8
+python-telegram-bot==21.9
     # via -r requirements.in
 pytz==2024.2
     # via
@@ -246,6 +249,8 @@ six==1.17.0
     #   html5lib
     #   irc-bot
     #   python-dateutil
+sniffio==1.3.1
+    # via anyio
 soupsieve==2.6
     # via
     #   beautifulsoup4
@@ -258,12 +263,11 @@ tempora==5.7.0
     #   portend
 time-machine==2.16.0
     # via pendulum
-tornado==6.4.2
-    # via python-telegram-bot
 transmission-rpc==7.0.11
     # via -r requirements.in
 typing-extensions==4.12.2
     # via
+    #   anyio
     #   flexget
     #   sqlalchemy
     #   transmission-rpc
