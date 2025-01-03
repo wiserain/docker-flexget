@@ -203,7 +203,7 @@ python-dateutil==2.9.0.post0
     #   pendulum
     #   tempora
     #   time-machine
-python-telegram-bot==21.9
+python-telegram-bot==21.10
     # via -r requirements.in
 pytz==2024.2
     # via
