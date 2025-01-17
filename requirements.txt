@@ -62,7 +62,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.13.11
+flexget==3.13.16
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -120,7 +120,7 @@ markupsafe==3.0.2
     #   werkzeug
 mdurl==0.1.2
     # via markdown-it-py
-more-itertools==10.5.0
+more-itertools==10.6.0
     # via
     #   cheroot
     #   cherrypy
@@ -167,7 +167,7 @@ rebulk==3.2.0
     # via
     #   flexget
     #   guessit
-referencing==0.35.1
+referencing==0.36.1
     # via
     #   jsonschema
     #   jsonschema-specifications
@@ -209,6 +209,7 @@ transmission-rpc==7.0.11
 typing-extensions==4.12.2
     # via
     #   anyio
+    #   referencing
     #   sqlalchemy
     #   transmission-rpc
 tzdata==2024.2
