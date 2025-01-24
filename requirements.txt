@@ -60,7 +60,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.13.17
+flexget==3.13.23
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -72,7 +72,7 @@ h11==0.14.0
     # via httpcore
 h2==4.1.0
     # via httpx
-hpack==4.0.0
+hpack==4.1.0
     # via h2
 html5lib==1.1
     # via flexget
@@ -80,7 +80,7 @@ httpcore==1.0.7
     # via httpx
 httpx[http2,socks]==0.28.1
     # via python-telegram-bot
-hyperframe==6.0.1
+hyperframe==6.1.0
     # via h2
 idna==3.10
     # via
@@ -216,7 +216,7 @@ typing-extensions==4.12.2
     #   referencing
     #   sqlalchemy
     #   transmission-rpc
-tzdata==2024.2
+tzdata==2025.1
     # via pendulum
 tzlocal==5.2
     # via apscheduler
