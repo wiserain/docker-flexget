@@ -10,7 +10,7 @@ anyio==4.8.0
     # via httpx
 apscheduler==3.11.0
     # via flexget
-attrs==24.3.0
+attrs==25.1.0
     # via
     #   jsonschema
     #   referencing
@@ -24,7 +24,7 @@ blinker==1.9.0
     # via flask
 brotli==1.1.0
     # via flask-compress
-certifi==2024.12.14
+certifi==2025.1.31
     # via
     #   httpcore
     #   httpx
@@ -60,7 +60,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.13.23
+flexget==3.13.26
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -159,7 +159,7 @@ python-dateutil==2.9.0.post0
     #   time-machine
 python-telegram-bot[http2,socks]==21.10
     # via -r requirements.in
-pytz==2024.2
+pytz==2025.1
     # via flask-restx
 pyyaml==6.0.2
     # via flexget
@@ -169,7 +169,7 @@ rebulk==3.2.0
     # via
     #   flexget
     #   guessit
-referencing==0.36.1
+referencing==0.36.2
     # via
     #   jsonschema
     #   jsonschema-specifications
