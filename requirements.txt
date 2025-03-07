@@ -58,7 +58,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.15.17
+flexget==3.15.22
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -102,7 +102,7 @@ jaraco-functools==4.1.0
     #   tempora
 jaraco-text==4.0.0
     # via jaraco-collections
-jinja2==3.1.5
+jinja2==3.1.6
     # via
     #   flask
     #   flexget
@@ -155,7 +155,7 @@ python-dateutil==2.9.0.post0
     #   pendulum
     #   tempora
     #   time-machine
-python-telegram-bot[http2,socks]==21.10
+python-telegram-bot[http2,socks]==21.11.1
     # via -r requirements.in
 pytz==2025.1
     # via flask-restx
@@ -217,7 +217,7 @@ typing-extensions==4.12.2
     #   transmission-rpc
 tzdata==2025.1
     # via pendulum
-tzlocal==5.3
+tzlocal==5.3.1
     # via apscheduler
 urllib3==1.26.20
     # via
