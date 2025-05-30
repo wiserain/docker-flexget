@@ -52,13 +52,13 @@ flask==3.1.1
     #   flexget
 flask-compress==1.17
     # via flexget
-flask-cors==5.0.1
+flask-cors==6.0.0
     # via flexget
 flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget==3.16.0
+flexget==3.16.3
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -106,7 +106,7 @@ jinja2==3.1.6
     # via
     #   flask
     #   flexget
-jsonschema==4.23.0
+jsonschema==4.24.0
     # via
     #   flask-restx
     #   flexget
@@ -135,7 +135,7 @@ pendulum==3.1.0
     # via flexget
 plumbum==1.9.0
     # via rpyc
-portend==3.2.0
+portend==3.2.1
     # via cherrypy
 psutil==7.0.0
     # via flexget
