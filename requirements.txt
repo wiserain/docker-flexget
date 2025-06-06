@@ -67,7 +67,7 @@ flexget[all]==3.16.3
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
-greenlet==3.2.2
+greenlet==3.2.3
     # via sqlalchemy
 guessit==3.8.0
     # via flexget
