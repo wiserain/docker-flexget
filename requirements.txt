@@ -63,7 +63,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget[all]==3.16.9
+flexget[all]==3.16.12
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -173,7 +173,7 @@ python-dateutil==2.9.0.post0
     #   guessit
     #   pendulum
     #   tempora
-python-telegram-bot==22.1
+python-telegram-bot==22.2
     # via flexget
 pytz==2025.2
     # via flask-restx
@@ -202,7 +202,7 @@ requests-toolbelt==1.0.0
     # via cloudscraper
 rich==14.0.0
     # via flexget
-rpds-py==0.25.1
+rpds-py==0.26.0
     # via
     #   jsonschema
     #   referencing
