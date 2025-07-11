@@ -55,7 +55,7 @@ flask==3.1.1
     #   flask-login
     #   flask-restx
     #   flexget
-flask-compress==1.17
+flask-compress==1.18
     # via flexget
 flask-cors==6.0.1
     # via flexget
@@ -63,7 +63,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget[all]==3.16.12
+flexget[all]==3.16.13
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -179,6 +179,8 @@ pytz==2025.2
     # via flask-restx
 pyyaml==6.0.2
     # via flexget
+pyzstd==0.17.0
+    # via flask-compress
 qbittorrent-api==2025.5.0
     # via flexget
 rarfile==4.2
@@ -229,11 +231,12 @@ tempora==5.8.1
     # via portend
 transmission-rpc==7.0.11
     # via flexget
-typing-extensions==4.14.0
+typing-extensions==4.14.1
     # via
     #   anyio
     #   beautifulsoup4
     #   flexget
+    #   pyzstd
     #   referencing
     #   sqlalchemy
     #   transmission-rpc
@@ -257,8 +260,6 @@ werkzeug==3.1.3
     #   flexget
 zc-lockfile==3.0.post1
     # via cherrypy
-zstandard==0.23.0
-    # via flask-compress
 zxcvbn==4.5.0
     # via flexget
 
