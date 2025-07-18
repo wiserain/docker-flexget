@@ -26,7 +26,7 @@ blinker==1.9.0
     # via flask
 brotli==1.1.0
     # via flask-compress
-certifi==2025.6.15
+certifi==2025.7.14
     # via
     #   flexget
     #   httpcore
@@ -63,7 +63,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget[all]==3.16.13
+flexget[all]==3.16.14
     # via -r requirements.in
 future==0.18.3
     # via irc-bot
@@ -122,7 +122,7 @@ jinja2==3.1.6
     # via
     #   flask
     #   flexget
-jsonschema==4.24.0
+jsonschema==4.25.0
     # via
     #   flask-restx
     #   flexget
@@ -181,7 +181,7 @@ pyyaml==6.0.2
     # via flexget
 pyzstd==0.17.0
     # via flask-compress
-qbittorrent-api==2025.5.0
+qbittorrent-api==2025.7.0
     # via flexget
 rarfile==4.2
     # via -r requirements.in
