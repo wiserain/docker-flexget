@@ -16,6 +16,8 @@ env:
 jobs:
   buildx:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     if: github.event_name != 'pull_request'
     steps:
       -
