@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       packages: write
+      contents: write
     if: github.event_name != 'pull_request'
     steps:
       -
