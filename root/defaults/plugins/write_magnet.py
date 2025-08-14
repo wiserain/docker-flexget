@@ -212,8 +212,7 @@ class ConvertMagnet:
             if session and handle:
                 session.remove_torrent(handle, True)
 
-        torrent_path = dest_dir / (lt_info.name() + '.torrent')
-        torrent_path = Path(pathscrub(str(torrent_path)))
+        torrent_path = dest_dir / pathscrub(lt_info.name() + '.torrent', filename=True)
         with torrent_path.open('wb') as f:
             f.write(lt.bencode(torrent_dict))
         logger.debug('Torrent file wrote to {}', torrent_path)
