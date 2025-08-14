@@ -48,7 +48,7 @@ class ConvertMagnet:
             logger.debug('Failed to get trackers from {}: {}', trackers_from, str(e))
             self.trackers = []
 
-    def convert_torrent_info(self, torrent_info):
+    def _convert_lt_info(self, torrent_info):
         """from libtorrent torrent_info to python dictionary object"""
         import libtorrent as lt
 
@@ -64,15 +64,7 @@ class ConvertMagnet:
             'magnet_uri': lt.make_magnet_uri(torrent_info),
         }
 
-    def magnet_to_torrent(
-        self,
-        magnet_uri: str,
-        destination_folder: Path,
-        timeout: float,
-        num_try: int,
-        use_dht: bool,
-        http_proxy,
-    ):
+    def _setup_lt_session(self, magnet_uri: str, dest_dir: Path, use_dht: bool, http_proxy: str):
         import libtorrent as lt
 
         # parameters
@@ -105,7 +97,7 @@ class ConvertMagnet:
         except Exception as e:
             logger.debug('Failed to add trackers: {}', str(e))
 
-        params.save_path = str(destination_folder)
+        params.save_path = str(dest_dir)
 
         # session from setting pack
         settings = {
@@ -143,14 +135,9 @@ class ConvertMagnet:
         # session.add_extension('ut_pex')
         # session.add_extension('metadata_transfer')
 
-        # handle
-        handle = session.add_torrent(params)
+        return session, params
 
-        if use_dht:
-            handle.force_dht_announce()
-
-        logger.debug('Acquiring torrent metadata for magnet {}', magnet_uri)
-
+    def _get_metadata(self, handle, timeout: float, num_try: int):
         max_try = max(num_try, 1)
         for tryid in range(max_try):
             timeout_value = timeout
@@ -162,24 +149,11 @@ class ConvertMagnet:
                     break
 
             if handle.has_metadata():
-                lt_info = handle.get_torrent_info()
                 logger.debug('Metadata acquired after {}*{}+{:.1f} seconds', tryid, timeout, timeout - timeout_value)
-                break
-            if tryid+1 == max_try:
-                session.remove_torrent(handle, True)
-                raise plugin.PluginError(f'Timed out after {max_try}*{timeout} seconds')
+                return handle.get_torrent_info()
+        raise plugin.PluginError(f'Timed out after {max_try}*{timeout} seconds')
 
-        # create torrent object
-        torrent = lt.create_torrent(lt_info)
-        torrent.set_creator(f"libtorrent v{lt.version}")    # signature
-        torrent_dict = torrent.generate()
-
-        torrent_info = self.convert_torrent_info(lt_info)
-        torrent_info.update({
-            'trackers': params['trackers'] if isinstance(params, dict) else params.trackers,
-            'creation_date': datetime.fromtimestamp(torrent_dict[b'creation date']).isoformat(),
-        })
-
+    def _get_peer_info(self, handle, timeout: float) -> dict:
         # start scraping
         timeout_value = timeout
         logger.debug('Trying to get peerinfo ... ')
@@ -192,18 +166,53 @@ class ConvertMagnet:
         if handle.status(0).num_complete >= 0:
             torrent_status = handle.status(0)
             logger.debug('Peerinfo acquired after {:.1f} seconds', timeout - timeout_value)
-
-            torrent_info.update({
+            return {
                 'seeders': torrent_status.num_complete,
                 'peers': torrent_status.num_incomplete,
                 'total_wanted': torrent_status.total_wanted
+            }
+        raise plugin.PluginError(f'Timed out after {timeout} seconds')
+
+    def magnet_to_torrent(
+        self,
+        magnet_uri: str,
+        dest_dir: Path,
+        timeout: float,
+        num_try: int,
+        use_dht: bool,
+        http_proxy: str,
+    ):
+        import libtorrent as lt
+
+        session, params = self._setup_lt_session(magnet_uri, dest_dir, use_dht, http_proxy)
+        handle = None
+        try:
+            handle = session.add_torrent(params)
+
+            if use_dht:
+                handle.force_dht_announce()
+
+            logger.debug('Acquiring torrent metadata for magnet {}', magnet_uri)
+
+            lt_info = self._get_metadata(handle, timeout, num_try)
+
+            # create torrent object
+            torrent = lt.create_torrent(lt_info)
+            torrent.set_creator(f"libtorrent v{lt.version}")    # signature
+            torrent_dict = torrent.generate()
+
+            torrent_info = self._convert_lt_info(lt_info)
+            torrent_info.update({
+                'trackers': params['trackers'] if isinstance(params, dict) else params.trackers,
+                'creation_date': datetime.fromtimestamp(torrent_dict[b'creation date']).isoformat(),
             })
-        else:
-            raise plugin.PluginError(f'Timed out after {timeout} seconds')
+            peer_info = self._get_peer_info(handle, timeout)
+            torrent_info.update(peer_info)
+        finally:
+            if session and handle:
+                session.remove_torrent(handle, True)
 
-        session.remove_torrent(handle, True)
-
-        torrent_path = destination_folder / (lt_info.name() + '.torrent')
+        torrent_path = dest_dir / (lt_info.name() + '.torrent')
         torrent_path = Path(pathscrub(str(torrent_path)))
         with torrent_path.open('wb') as f:
             f.write(lt.bencode(torrent_dict))
