@@ -33,9 +33,9 @@ beautifulsoup4==4.13.4
     #   subliminal
 blinker==1.9.0
     # via flask
-boto3==1.40.6
+boto3==1.40.11
     # via flexget
-botocore==1.40.6
+botocore==1.40.11
     # via
     #   boto3
     #   flexget
@@ -97,7 +97,7 @@ enzyme==0.5.2
     #   subliminal
 feedparser==6.0.11
     # via flexget
-flask==3.1.1
+flask==3.1.2
     # via
     #   flask-compress
     #   flask-cors
@@ -112,7 +112,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget[all]==3.17.11
+flexget[all]==3.17.14
     # via -r requirements.in
 ftputil==5.1.0
     # via flexget
@@ -164,7 +164,7 @@ jaraco-collections==5.2.1
     # via cherrypy
 jaraco-context==6.0.1
     # via jaraco-text
-jaraco-functools==4.2.1
+jaraco-functools==4.3.0
     # via
     #   cheroot
     #   jaraco-text
@@ -180,7 +180,7 @@ jmespath==1.0.1
     #   boto3
     #   botocore
     #   flexget
-jsonschema==4.25.0
+jsonschema==4.25.1
     # via
     #   flask-restx
     #   flexget
@@ -211,7 +211,7 @@ paramiko==3.5.1
     # via
     #   flexget
     #   pysftp
-pbr==6.1.1
+pbr==7.0.0
     # via
     #   flexget
     #   stevedore
