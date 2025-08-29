@@ -4,6 +4,27 @@
 #
 #    pip-compile
 #
+aiofiles==24.1.0
+    # via
+    #   flexget
+    #   matrix-nio
+aiohappyeyeballs==2.6.1
+    # via
+    #   aiohttp
+    #   flexget
+aiohttp==3.12.15
+    # via
+    #   aiohttp-socks
+    #   flexget
+    #   matrix-nio
+aiohttp-socks==0.10.1
+    # via
+    #   flexget
+    #   matrix-nio
+aiosignal==1.4.0
+    # via
+    #   aiohttp
+    #   flexget
 aniso8601==10.0.1
     # via flask-restx
 anyio==4.10.0
@@ -14,6 +35,8 @@ apscheduler==3.11.0
     # via flexget
 attrs==25.3.0
     # via
+    #   aiohttp
+    #   flexget
     #   jsonschema
     #   referencing
 autocommand==2.2.2
@@ -27,15 +50,15 @@ bcrypt==4.3.0
     # via
     #   flexget
     #   paramiko
-beautifulsoup4==4.13.4
+beautifulsoup4==4.13.5
     # via
     #   flexget
     #   subliminal
 blinker==1.9.0
     # via flask
-boto3==1.40.11
+boto3==1.40.16
     # via flexget
-botocore==1.40.11
+botocore==1.40.16
     # via
     #   boto3
     #   flexget
@@ -112,8 +135,13 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget[all]==3.17.14
+flexget[all]==3.18.1
     # via -r requirements.in
+frozenlist==1.7.0
+    # via
+    #   aiohttp
+    #   aiosignal
+    #   flexget
 ftputil==5.1.0
     # via flexget
 future==0.18.3
@@ -128,8 +156,11 @@ h11==0.16.0
     # via
     #   flexget
     #   httpcore
-h2==4.2.0
-    # via flexget
+    #   matrix-nio
+h2==4.3.0
+    # via
+    #   flexget
+    #   matrix-nio
 hpack==4.1.0
     # via
     #   flexget
@@ -154,6 +185,7 @@ idna==3.10
     #   flexget
     #   httpx
     #   requests
+    #   yarl
 importlib-resources==6.5.2
     # via flask-restx
 irc-bot==1.0.41
@@ -184,8 +216,11 @@ jsonschema==4.25.1
     # via
     #   flask-restx
     #   flexget
+    #   matrix-nio
 jsonschema-specifications==2025.4.1
-    # via jsonschema
+    # via
+    #   flexget
+    #   jsonschema
 loguru==0.7.3
     # via flexget
 markdown-it-py==4.0.0
@@ -195,6 +230,8 @@ markupsafe==3.0.2
     #   flask
     #   jinja2
     #   werkzeug
+matrix-nio==0.25.2
+    # via flexget
 mdurl==0.1.2
     # via markdown-it-py
 more-itertools==10.7.0
@@ -203,6 +240,11 @@ more-itertools==10.7.0
     #   cherrypy
     #   jaraco-functools
     #   jaraco-text
+multidict==6.6.4
+    # via
+    #   aiohttp
+    #   flexget
+    #   yarl
 packaging==25.0
     # via
     #   flexget
@@ -211,7 +253,7 @@ paramiko==3.5.1
     # via
     #   flexget
     #   pysftp
-pbr==7.0.0
+pbr==7.0.1
     # via
     #   flexget
     #   stevedore
@@ -229,12 +271,21 @@ plumbum==1.9.0
     # via rpyc
 portend==3.2.1
     # via cherrypy
+propcache==0.3.2
+    # via
+    #   aiohttp
+    #   flexget
+    #   yarl
 psutil==7.0.0
     # via flexget
 pycparser==2.22
     # via
     #   cffi
     #   flexget
+pycryptodome==3.23.0
+    # via
+    #   flexget
+    #   matrix-nio
 pygments==2.19.2
     # via rich
 pynacl==1.5.0
@@ -262,6 +313,10 @@ python-dateutil==2.9.0.post0
     #   guessit
     #   pendulum
     #   tempora
+python-socks[asyncio]==2.7.2
+    # via
+    #   aiohttp-socks
+    #   flexget
 python-telegram-bot==22.3
     # via flexget
 pytz==2025.2
@@ -283,9 +338,10 @@ rebulk==3.2.0
     #   guessit
 referencing==0.36.2
     # via
+    #   flexget
     #   jsonschema
     #   jsonschema-specifications
-requests==2.32.4
+requests==2.32.5
     # via
     #   cloudscraper
     #   flexget
@@ -300,6 +356,7 @@ rich==14.1.0
     # via flexget
 rpds-py==0.27.0
     # via
+    #   flexget
     #   jsonschema
     #   referencing
 rpyc==6.0.2
@@ -349,6 +406,7 @@ transmission-rpc==7.0.11
     # via flexget
 typing-extensions==4.14.1
     # via
+    #   aiosignal
     #   anyio
     #   beautifulsoup4
     #   flexget
@@ -360,6 +418,10 @@ tzdata==2025.2
     # via pendulum
 tzlocal==5.3.1
     # via apscheduler
+unpaddedbase64==2.1.0
+    # via
+    #   flexget
+    #   matrix-nio
 urllib3==2.5.0
     # via
     #   botocore
@@ -374,6 +436,10 @@ werkzeug==3.1.3
     #   flask-cors
     #   flask-login
     #   flask-restx
+    #   flexget
+yarl==1.20.1
+    # via
+    #   aiohttp
     #   flexget
 zc-lockfile==3.0.post1
     # via cherrypy
