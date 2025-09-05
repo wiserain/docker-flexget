@@ -56,9 +56,9 @@ beautifulsoup4==4.13.5
     #   subliminal
 blinker==1.9.0
     # via flask
-boto3==1.40.16
+boto3==1.40.23
     # via flexget
-botocore==1.40.16
+botocore==1.40.23
     # via
     #   boto3
     #   flexget
@@ -100,7 +100,7 @@ click-option-group==0.5.7
     #   subliminal
 cloudscraper==1.2.71
     # via -r requirements.in
-cryptography==45.0.6
+cryptography==45.0.7
     # via
     #   flexget
     #   paramiko
@@ -135,7 +135,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget[all]==3.18.1
+flexget[all]==3.18.5
     # via -r requirements.in
 frozenlist==1.7.0
     # via
@@ -234,7 +234,7 @@ matrix-nio==0.25.2
     # via flexget
 mdurl==0.1.2
     # via markdown-it-py
-more-itertools==10.7.0
+more-itertools==10.8.0
     # via
     #   cheroot
     #   cherrypy
@@ -253,15 +253,11 @@ paramiko==3.5.1
     # via
     #   flexget
     #   pysftp
-pbr==7.0.1
-    # via
-    #   flexget
-    #   stevedore
 pendulum==3.1.0
     # via flexget
 pillow==11.3.0
     # via flexget
-platformdirs==4.3.8
+platformdirs==4.4.0
     # via
     #   flexget
     #   subliminal
@@ -354,7 +350,7 @@ requests-toolbelt==1.0.0
     # via cloudscraper
 rich==14.1.0
     # via flexget
-rpds-py==0.27.0
+rpds-py==0.27.1
     # via
     #   flexget
     #   jsonschema
@@ -379,7 +375,7 @@ sniffio==1.3.1
     #   flexget
 socksio==1.0.0
     # via flexget
-soupsieve==2.7
+soupsieve==2.8
     # via
     #   beautifulsoup4
     #   flexget
@@ -389,7 +385,7 @@ srt==3.5.3
     # via
     #   flexget
     #   subliminal
-stevedore==5.4.1
+stevedore==5.5.0
     # via
     #   dogpile-cache
     #   flexget
@@ -404,7 +400,7 @@ tomli==2.2.1
     #   subliminal
 transmission-rpc==7.0.11
     # via flexget
-typing-extensions==4.14.1
+typing-extensions==4.15.0
     # via
     #   aiosignal
     #   anyio
