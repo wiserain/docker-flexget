@@ -56,9 +56,9 @@ beautifulsoup4==4.13.5
     #   subliminal
 blinker==1.9.0
     # via flask
-boto3==1.40.23
+boto3==1.40.28
     # via flexget
-botocore==1.40.23
+botocore==1.40.28
     # via
     #   boto3
     #   flexget
@@ -71,7 +71,7 @@ certifi==2025.8.3
     #   httpcore
     #   httpx
     #   requests
-cffi==1.17.1
+cffi==2.0.0
     # via
     #   cryptography
     #   flexget
@@ -118,7 +118,7 @@ enzyme==0.5.2
     # via
     #   flexget
     #   subliminal
-feedparser==6.0.11
+feedparser==6.0.12
     # via flexget
 flask==3.1.2
     # via
@@ -135,7 +135,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.0
     # via flexget
-flexget[all]==3.18.5
+flexget[all]==3.18.7
     # via -r requirements.in
 frozenlist==1.7.0
     # via
@@ -217,7 +217,7 @@ jsonschema==4.25.1
     #   flask-restx
     #   flexget
     #   matrix-nio
-jsonschema-specifications==2025.4.1
+jsonschema-specifications==2025.9.1
     # via
     #   flexget
     #   jsonschema
@@ -274,7 +274,7 @@ propcache==0.3.2
     #   yarl
 psutil==7.0.0
     # via flexget
-pycparser==2.22
+pycparser==2.23
     # via
     #   cffi
     #   flexget
@@ -284,7 +284,7 @@ pycryptodome==3.23.0
     #   matrix-nio
 pygments==2.19.2
     # via rich
-pynacl==1.5.0
+pynacl==1.6.0
     # via
     #   flexget
     #   paramiko
@@ -357,7 +357,7 @@ rpds-py==0.27.1
     #   referencing
 rpyc==6.0.2
     # via flexget
-s3transfer==0.13.1
+s3transfer==0.14.0
     # via
     #   boto3
     #   flexget
