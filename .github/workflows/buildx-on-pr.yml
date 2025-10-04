@@ -6,7 +6,7 @@ on:
 env:
   DOCKERHUB_USER: wiserain
   IMAGE_NAME: ghcr.io/wiserain/flexget
-  ALPINE_VER: '3.21'
+  ALPINE_VER: '3.22'
 
 jobs:
   buildx-on-pr:
