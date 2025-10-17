@@ -12,7 +12,7 @@ aiohappyeyeballs==2.6.1
     # via
     #   aiohttp
     #   flexget
-aiohttp==3.12.15
+aiohttp==3.13.0
     # via
     #   aiohttp-socks
     #   flexget
@@ -33,7 +33,7 @@ anyio==4.11.0
     #   httpx
 apscheduler==3.11.0
     # via flexget
-attrs==25.3.0
+attrs==25.4.0
     # via
     #   aiohttp
     #   flexget
@@ -56,9 +56,9 @@ beautifulsoup4==4.14.2
     #   subliminal
 blinker==1.9.0
     # via flask
-boto3==1.40.45
+boto3==1.40.50
     # via flexget
-botocore==1.40.45
+botocore==1.40.50
     # via
     #   boto3
     #   flexget
@@ -94,7 +94,7 @@ click==8.3.0
     #   flask
     #   flexget
     #   subliminal
-click-option-group==0.5.8
+click-option-group==0.5.9
     # via
     #   flexget
     #   subliminal
@@ -110,7 +110,7 @@ decorator==5.2.1
     #   flexget
 deluge-client==1.10.2
     # via flexget
-dogpile-cache==1.4.1
+dogpile-cache==1.5.0
     # via
     #   flexget
     #   subliminal
@@ -135,9 +135,9 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.2
     # via flexget
-flexget[all]==3.18.14
+flexget[all]==3.18.16
     # via -r requirements.in
-frozenlist==1.7.0
+frozenlist==1.8.0
     # via
     #   aiohttp
     #   aiosignal
@@ -179,7 +179,7 @@ hyperframe==6.1.0
     # via
     #   flexget
     #   h2
-idna==3.10
+idna==3.11
     # via
     #   anyio
     #   flexget
@@ -240,7 +240,7 @@ more-itertools==10.8.0
     #   cherrypy
     #   jaraco-functools
     #   jaraco-text
-multidict==6.6.4
+multidict==6.7.0
     # via
     #   aiohttp
     #   flexget
@@ -257,7 +257,7 @@ pendulum==3.1.0
     # via flexget
 pillow==11.3.0
     # via flexget
-platformdirs==4.4.0
+platformdirs==4.5.0
     # via
     #   flexget
     #   subliminal
@@ -267,7 +267,7 @@ plumbum==1.9.0
     # via rpyc
 portend==3.2.1
     # via cherrypy
-propcache==0.4.0
+propcache==0.4.1
     # via
     #   aiohttp
     #   flexget
@@ -393,7 +393,7 @@ subliminal==2.2.1
     # via flexget
 tempora==5.8.1
     # via portend
-tomli==2.2.1
+tomli==2.3.0
     # via
     #   flexget
     #   subliminal
@@ -432,7 +432,7 @@ werkzeug==3.1.3
     #   flask-login
     #   flask-restx
     #   flexget
-yarl==1.21.0
+yarl==1.22.0
     # via
     #   aiohttp
     #   flexget
