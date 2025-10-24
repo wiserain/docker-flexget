@@ -12,7 +12,7 @@ aiohappyeyeballs==2.6.1
     # via
     #   aiohttp
     #   flexget
-aiohttp==3.13.0
+aiohttp==3.13.1
     # via
     #   aiohttp-socks
     #   flexget
@@ -46,6 +46,8 @@ babelfish==0.6.1
     #   flexget
     #   guessit
     #   subliminal
+backports-zstd==1.0.0
+    # via flask-compress
 bcrypt==5.0.0
     # via
     #   flexget
@@ -56,9 +58,9 @@ beautifulsoup4==4.14.2
     #   subliminal
 blinker==1.9.0
     # via flask
-boto3==1.40.50
+boto3==1.40.56
     # via flexget
-botocore==1.40.50
+botocore==1.40.56
     # via
     #   boto3
     #   flexget
@@ -80,7 +82,7 @@ chardet==5.2.0
     # via
     #   flexget
     #   subliminal
-charset-normalizer==3.4.3
+charset-normalizer==3.4.4
     # via
     #   flexget
     #   requests
@@ -100,7 +102,7 @@ click-option-group==0.5.9
     #   subliminal
 cloudscraper==1.2.71
     # via -r requirements.in
-cryptography==46.0.2
+cryptography==46.0.3
     # via
     #   flexget
     #   paramiko
@@ -127,7 +129,7 @@ flask==3.1.2
     #   flask-login
     #   flask-restx
     #   flexget
-flask-compress==1.18
+flask-compress==1.20
     # via flexget
 flask-cors==6.0.1
     # via flexget
@@ -135,7 +137,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.2
     # via flexget
-flexget[all]==3.18.16
+flexget[all]==3.18.18
     # via -r requirements.in
 frozenlist==1.8.0
     # via
@@ -272,7 +274,7 @@ propcache==0.4.1
     #   aiohttp
     #   flexget
     #   yarl
-psutil==7.1.0
+psutil==7.1.1
     # via flexget
 pycparser==2.23
     # via
@@ -317,8 +319,6 @@ python-telegram-bot==22.5
     # via flexget
 pyyaml==6.0.3
     # via flexget
-pyzstd==0.18.0
-    # via flask-compress
 qbittorrent-api==2025.7.0
     # via flexget
 rarfile==4.2
@@ -330,7 +330,7 @@ rebulk==3.2.0
     # via
     #   flexget
     #   guessit
-referencing==0.36.2
+referencing==0.37.0
     # via
     #   flask-restx
     #   flexget
@@ -405,7 +405,6 @@ typing-extensions==4.15.0
     #   anyio
     #   beautifulsoup4
     #   flexget
-    #   pyzstd
     #   referencing
     #   sqlalchemy
     #   transmission-rpc
