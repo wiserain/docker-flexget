@@ -31,7 +31,7 @@ anyio==4.11.0
     # via
     #   flexget
     #   httpx
-apscheduler==3.11.0
+apscheduler==3.11.1
     # via flexget
 attrs==25.4.0
     # via
@@ -265,7 +265,7 @@ platformdirs==4.5.0
     #   subliminal
 plexapi==4.17.1
     # via flexget
-plumbum==1.9.0
+plumbum==1.10.0
     # via rpyc
 portend==3.2.1
     # via cherrypy
