@@ -12,12 +12,12 @@ aiohappyeyeballs==2.6.1
     # via
     #   aiohttp
     #   flexget
-aiohttp==3.13.1
+aiohttp==3.13.2
     # via
     #   aiohttp-socks
     #   flexget
     #   matrix-nio
-aiohttp-socks==0.10.1
+aiohttp-socks==0.10.2
     # via
     #   flexget
     #   matrix-nio
@@ -58,9 +58,9 @@ beautifulsoup4==4.14.2
     #   subliminal
 blinker==1.9.0
     # via flask
-boto3==1.40.59
+boto3==1.40.69
     # via flexget
-botocore==1.40.59
+botocore==1.40.69
     # via
     #   boto3
     #   flexget
@@ -137,7 +137,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.2
     # via flexget
-flexget[all]==3.18.21
+flexget[all]==3.18.23
     # via -r requirements.in
 frozenlist==1.8.0
     # via
@@ -257,8 +257,6 @@ paramiko==3.5.1
     #   pysftp
 pendulum==3.1.0
     # via flexget
-pillow==11.3.0
-    # via flexget
 platformdirs==4.5.0
     # via
     #   flexget
@@ -311,7 +309,7 @@ python-dateutil==2.9.0.post0
     #   guessit
     #   pendulum
     #   tempora
-python-socks[asyncio]==2.7.2
+python-socks[asyncio]==2.7.3
     # via
     #   aiohttp-socks
     #   flexget
