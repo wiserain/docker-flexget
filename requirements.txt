@@ -58,9 +58,9 @@ beautifulsoup4==4.14.3
     #   subliminal
 blinker==1.9.0
     # via flask
-boto3==1.42.30
+boto3==1.42.34
     # via flexget
-botocore==1.42.30
+botocore==1.42.34
     # via
     #   boto3
     #   flexget
@@ -137,7 +137,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.2
     # via flexget
-flexget[all]==3.18.39
+flexget[all]==3.18.42
     # via -r requirements.in
 frozenlist==1.8.0
     # via
@@ -209,7 +209,7 @@ jinja2==3.1.6
     # via
     #   flask
     #   flexget
-jmespath==1.0.1
+jmespath==1.1.0
     # via
     #   boto3
     #   botocore
@@ -242,7 +242,7 @@ more-itertools==10.8.0
     #   cherrypy
     #   jaraco-functools
     #   jaraco-text
-multidict==6.7.0
+multidict==6.7.1
     # via
     #   aiohttp
     #   flexget
@@ -255,7 +255,7 @@ paramiko==3.5.1
     # via
     #   flexget
     #   pysftp
-pendulum==3.1.0
+pendulum==3.2.0
     # via flexget
 platformdirs==4.5.1
     # via
@@ -272,9 +272,9 @@ propcache==0.4.1
     #   aiohttp
     #   flexget
     #   yarl
-psutil==7.2.1
+psutil==7.2.2
     # via flexget
-pycparser==2.23
+pycparser==3.0
     # via
     #   cffi
     #   flexget
@@ -313,7 +313,7 @@ python-socks[asyncio]==2.8.0
     # via
     #   aiohttp-socks
     #   flexget
-python-telegram-bot==22.5
+python-telegram-bot==22.6
     # via flexget
 pyyaml==6.0.3
     # via flexget
@@ -345,7 +345,7 @@ requests==2.32.5
     #   transmission-rpc
 requests-toolbelt==1.0.0
     # via cloudscraper
-rich==14.2.0
+rich==14.3.1
     # via flexget
 rpds-py==0.30.0
     # via
@@ -368,7 +368,7 @@ six==1.17.0
     #   python-dateutil
 socksio==1.0.0
     # via flexget
-soupsieve==2.8.2
+soupsieve==2.8.3
     # via
     #   beautifulsoup4
     #   flexget
