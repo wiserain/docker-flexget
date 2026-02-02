@@ -57,12 +57,12 @@ jobs:
             .
           CID=$(docker run -d ${{ env.IMAGE_NAME }}:testing)
           VER_FULL=$(docker exec $CID flexget -V | sed -n 1p)
-          echo "VER_FULL=$VER_FULL" >> $GITHUB_ENV
+          echo "ver_full=$VER_FULL" >> $GITHUB_OUTPUT
           docker rm -f $CID
           VER_MINOR=$(echo $VER_FULL | cut -d. -f-2)
-          echo "VER_MINOR=$VER_MINOR" >> $GITHUB_ENV
+          echo "ver_minor=$VER_MINOR" >> $GITHUB_OUTPUT
           VER_MAJOR=$(echo $VER_FULL | cut -d. -f-1)
-          echo "VER_MAJOR=$VER_MAJOR" >> $GITHUB_ENV
+          echo "ver_major=$VER_MAJOR" >> $GITHUB_OUTPUT
       -
         name: Login to docker.io
         uses: docker/login-action@v3
@@ -87,13 +87,13 @@ jobs:
           file: Dockerfile
           tags: |
             ${{ env.IMAGE_NAME }}:latest
-            ${{ env.IMAGE_NAME }}:${{ env.VER_FULL }}
-            ${{ env.IMAGE_NAME }}:${{ env.VER_MINOR }}
-            ${{ env.IMAGE_NAME }}:${{ env.VER_MAJOR }}
+            ${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_full }}
+            ${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_minor }}
+            ${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_major }}
             ghcr.io/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ env.VER_FULL }}
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ env.VER_MINOR }}
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ env.VER_MAJOR }}
+            ghcr.io/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_full }}
+            ghcr.io/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_minor }}
+            ghcr.io/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_major }}
           platforms: linux/amd64,linux/arm64
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
@@ -107,13 +107,13 @@ jobs:
           status: ${{ job.status }}
           description: |
             ${{ env.IMAGE_NAME }}:latest
-            ${{ env.IMAGE_NAME }}:${{ env.VER_FULL }}
-            ${{ env.IMAGE_NAME }}:${{ env.VER_MINOR }}
-            ${{ env.IMAGE_NAME }}:${{ env.VER_MAJOR }}
+            ${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_full }}
+            ${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_minor }}
+            ${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_major }}
             ghcr.io/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ env.VER_FULL }}
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ env.VER_MINOR }}
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ env.VER_MAJOR }}
+            ghcr.io/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_full }}
+            ghcr.io/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_minor }}
+            ghcr.io/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_major }}
       -
         name: Commit requirements.txt
         uses: EndBug/add-and-commit@v9
