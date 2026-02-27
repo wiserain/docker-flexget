@@ -138,7 +138,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.2
     # via flexget
-flexget[all]==3.18.48
+flexget[all]==3.18.52
     # via -r requirements.in
 frozenlist==1.8.0
     # via
@@ -377,7 +377,7 @@ soupsieve==2.8.3
     # via
     #   beautifulsoup4
     #   flexget
-sqlalchemy==2.0.46
+sqlalchemy==2.0.47
     # via flexget
 srt==3.5.3
     # via
@@ -398,7 +398,7 @@ tomli==2.4.0
     #   subliminal
 transmission-rpc==7.0.11
     # via flexget
-typer==0.24.0
+typer==0.24.1
     # via typer-slim
 typer-slim==0.24.0
     # via jaraco-text
