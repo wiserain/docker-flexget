@@ -31,7 +31,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
       -
         name: Initial Buildx
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: Dockerfile
@@ -52,7 +52,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Buildx and Push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         if: github.actor == github.event.repository.owner.login
         with:
           context: .
