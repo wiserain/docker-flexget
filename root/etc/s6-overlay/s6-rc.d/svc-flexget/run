@@ -5,7 +5,7 @@ flexget
 -c /config/config.yml
 --loglevel ${FG_LOG_LEVEL:-info}
 --logfile ${FG_LOG_FILE:-flexget.log}
-daemon start --autoreload-config
+daemon start
 "
 
 echo "*** Executing => $(echo $command)"
