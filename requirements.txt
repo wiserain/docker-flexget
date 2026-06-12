@@ -137,7 +137,7 @@ flask==3.1.3
     #   flexget
 flask-compress==1.24
     # via flexget
-flask-cors==6.0.2
+flask-cors==6.0.5
     # via flexget
 flask-login==0.6.3
     # via flexget
@@ -278,7 +278,7 @@ platformdirs==4.10.0
     #   subliminal
 plexapi==4.18.1
     # via flexget
-plumbum==2.0.0
+plumbum==2.0.1
     # via rpyc
 portend==3.2.1
     # via cherrypy
