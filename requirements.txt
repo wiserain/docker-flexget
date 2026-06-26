@@ -154,7 +154,7 @@ ftputil==5.2.0
     # via flexget
 future==0.18.3
     # via irc-bot
-greenlet==3.5.2
+greenlet==3.5.3
     # via sqlalchemy
 guessit==3.8.0
     # via
@@ -422,7 +422,7 @@ trakit==0.2.5
     #   knowit
 transmission-rpc==7.0.11
     # via flexget
-typer==0.26.7
+typer==0.26.8
     # via typer-slim
 typer-slim==0.24.0
     # via jaraco-text
