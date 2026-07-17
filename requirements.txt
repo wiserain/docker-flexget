@@ -8,11 +8,11 @@ aiofiles==24.1.0
     # via
     #   flexget
     #   matrix-nio
-aiohappyeyeballs==2.6.2
+aiohappyeyeballs==2.7.1
     # via
     #   aiohttp
     #   flexget
-aiohttp==3.13.5
+aiohttp==3.14.1
     # via
     #   aiohttp-socks
     #   flexget
@@ -29,7 +29,7 @@ aniso8601==10.0.1
     # via flask-restx
 annotated-doc==0.0.4
     # via typer
-anyio==4.13.0
+anyio==4.14.2
     # via
     #   flexget
     #   httpx
@@ -54,28 +54,28 @@ bcrypt==5.0.0
     # via
     #   flexget
     #   paramiko
-beautifulsoup4==4.14.3
+beautifulsoup4==4.15.0
     # via
     #   flexget
     #   subliminal
 blinker==1.9.0
     # via flask
-boto3==1.43.18
+boto3==1.43.46
     # via flexget
-botocore==1.43.18
+botocore==1.43.46
     # via
     #   boto3
     #   flexget
     #   s3transfer
 brotli==1.2.0
     # via flask-compress
-certifi==2026.5.20
+certifi==2026.6.17
     # via
     #   flexget
     #   httpcore
     #   httpx
     #   requests
-cffi==2.0.0
+cffi==2.1.0
     # via
     #   cryptography
     #   flexget
@@ -84,7 +84,7 @@ chardet==7.4.3
     # via
     #   flexget
     #   subliminal
-charset-normalizer==3.4.7
+charset-normalizer==3.4.9
     # via
     #   flexget
     #   requests
@@ -92,7 +92,7 @@ cheroot==11.1.2
     # via cherrypy
 cherrypy==18.10.0
     # via flexget
-click==8.4.1
+click==8.4.2
     # via
     #   click-option-group
     #   flask
@@ -104,7 +104,7 @@ click-option-group==0.5.9
     #   subliminal
 cloudscraper==1.2.71
     # via -r requirements.in
-cryptography==48.0.1
+cryptography==49.0.0
     # via
     #   flexget
     #   paramiko
@@ -143,7 +143,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.2
     # via flexget
-flexget[all]==3.19.27
+flexget[all]==3.19.28
     # via -r requirements.in
 frozenlist==1.8.0
     # via
@@ -169,7 +169,7 @@ h2==4.3.0
     # via
     #   flexget
     #   matrix-nio
-hpack==4.1.0
+hpack==4.2.0
     # via
     #   flexget
     #   h2
@@ -187,7 +187,7 @@ hyperframe==6.1.0
     # via
     #   flexget
     #   h2
-idna==3.17
+idna==3.18
     # via
     #   anyio
     #   flexget
@@ -208,12 +208,12 @@ jaraco-context==6.1.2
     # via
     #   jaraco-text
     #   tempora
-jaraco-functools==4.5.0
+jaraco-functools==4.6.0
     # via
     #   cheroot
     #   jaraco-text
     #   tempora
-jaraco-text==4.2.0
+jaraco-text==4.3.0
     # via jaraco-collections
 jinja2==3.1.6
     # via
@@ -256,7 +256,6 @@ more-itertools==11.1.0
     #   cherrypy
     #   jaraco-functools
     #   jaraco-text
-    #   tempora
 multidict==6.7.1
     # via
     #   aiohttp
@@ -276,7 +275,7 @@ platformdirs==4.10.0
     # via
     #   flexget
     #   subliminal
-plexapi==4.18.1
+plexapi==4.18.2
     # via flexget
 plumbum==2.0.1
     # via rpyc
@@ -328,11 +327,11 @@ python-dateutil==2.9.0.post0
     #   guessit
     #   pendulum
     #   tempora
-python-socks[asyncio]==2.8.1
+python-socks[asyncio]==2.8.2
     # via
     #   aiohttp-socks
     #   flexget
-python-telegram-bot==22.7
+python-telegram-bot==22.8
     # via flexget
 pyyaml==6.0.3
     # via
@@ -340,7 +339,7 @@ pyyaml==6.0.3
     #   knowit
 qbittorrent-api==2025.11.1
     # via flexget
-rarfile==4.2
+rarfile==4.3
     # via
     #   -r requirements.in
     #   flexget
@@ -370,14 +369,14 @@ rich==15.0.0
     # via
     #   flexget
     #   typer
-rpds-py==2026.5.1
+rpds-py==2026.6.3
     # via
     #   flexget
     #   jsonschema
     #   referencing
 rpyc==6.0.2
     # via flexget
-s3transfer==0.18.0
+s3transfer==0.19.1
     # via
     #   boto3
     #   flexget
@@ -403,14 +402,14 @@ srt==3.5.3
     # via
     #   flexget
     #   subliminal
-stevedore==5.8.0
+stevedore==5.9.0
     # via
     #   dogpile-cache
     #   flexget
     #   subliminal
 subliminal==2.6.0
     # via flexget
-tempora==5.9.0
+tempora==5.12.0
     # via portend
 tomlkit==0.15.0
     # via
@@ -422,12 +421,13 @@ trakit==0.2.5
     #   knowit
 transmission-rpc==7.0.11
     # via flexget
-typer==0.26.8
+typer==0.27.0
     # via typer-slim
 typer-slim==0.24.0
     # via jaraco-text
-typing-extensions==4.15.0
+typing-extensions==4.16.0
     # via
+    #   aiohttp
     #   aiosignal
     #   anyio
     #   beautifulsoup4
@@ -435,6 +435,7 @@ typing-extensions==4.15.0
     #   plumbum
     #   referencing
     #   sqlalchemy
+    #   tempora
     #   transmission-rpc
 tzdata==2026.3
     # via pendulum
