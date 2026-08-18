@@ -48,7 +48,7 @@ babelfish==0.6.1
     #   knowit
     #   subliminal
     #   trakit
-backports-zstd==1.6.0
+backports-zstd==1.7.0
     # via flask-compress
 bcrypt==5.0.0
     # via
@@ -302,7 +302,7 @@ pycryptodome==3.23.0
     # via
     #   flexget
     #   matrix-nio
-pygments==2.20.0
+pygments==2.21.0
     # via rich
 pymediainfo==7.0.1
     # via
@@ -457,7 +457,7 @@ urllib3==2.7.0
     #   flexget
     #   qbittorrent-api
     #   requests
-webencodings==0.5.1
+webencodings==0.6.1
     # via html5lib
 werkzeug==3.1.8
     # via
