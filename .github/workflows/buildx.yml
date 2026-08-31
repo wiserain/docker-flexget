@@ -45,14 +45,23 @@ jobs:
           platforms: linux/amd64,linux/arm64
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
+          cache-from: type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache
+          no-cache: ${{ github.event_name == 'schedule' }}
+          pull: ${{ github.event_name == 'schedule' }}
       -
         name: Load Built Image and Get Variables
         id: vars
         run: |
+          BUILD_CACHE_FLAGS=()
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+            BUILD_CACHE_FLAGS+=(--no-cache --pull)
+          fi
           docker buildx build \
             -t ${{ env.IMAGE_NAME }}:testing \
             --platform=linux/amd64 \
             --build-arg ALPINE_VER=${{ env.ALPINE_VER }} \
+            --cache-from type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache \
+            "${BUILD_CACHE_FLAGS[@]}" \
             --load \
             .
           CID=$(docker run -d ${{ env.IMAGE_NAME }}:testing)
@@ -97,6 +106,10 @@ jobs:
           platforms: linux/amd64,linux/arm64
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
+          cache-from: type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache,mode=max,compression=zstd
+          no-cache: ${{ github.event_name == 'schedule' }}
+          pull: ${{ github.event_name == 'schedule' }}
           push: true
       -
         name: Notification

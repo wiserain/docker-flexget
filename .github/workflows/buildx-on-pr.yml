@@ -39,6 +39,9 @@ jobs:
           platforms: linux/amd64,linux/arm64
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
+          cache-from: |
+            type=registry,ref=${{ env.IMAGE_NAME }}:buildcache-pr-${{ github.event.pull_request.number }}
+            type=registry,ref=${{ env.IMAGE_NAME }}:buildcache
       # 
       # now only for repository owner
       # 
@@ -63,6 +66,10 @@ jobs:
           platforms: linux/amd64,linux/arm64
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
+          cache-from: |
+            type=registry,ref=${{ env.IMAGE_NAME }}:buildcache-pr-${{ github.event.pull_request.number }}
+            type=registry,ref=${{ env.IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ env.IMAGE_NAME }}:buildcache-pr-${{ github.event.pull_request.number }},mode=max,compression=zstd
           push: true
       -
         name: Notification
