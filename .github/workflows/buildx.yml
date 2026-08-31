@@ -36,7 +36,20 @@ jobs:
         name: Set up Buildx
         uses: docker/setup-buildx-action@v4
       -
+        name: Get FlexGet Variables
+        id: vars
+        run: |
+          VER_FULL=$(sed -nE 's/^flexget(\[[^]]+\])?==([^[:space:]]+).*/\2/p' requirements.txt | head -n 1)
+          if [[ -z "${VER_FULL}" ]]; then
+            echo "Could not determine FlexGet version from requirements.txt" >&2
+            exit 1
+          fi
+          echo "ver_full=${VER_FULL}" >> "$GITHUB_OUTPUT"
+          echo "ver_minor=$(echo "${VER_FULL}" | cut -d. -f-2)" >> "$GITHUB_OUTPUT"
+          echo "ver_major=$(echo "${VER_FULL}" | cut -d. -f-1)" >> "$GITHUB_OUTPUT"
+      -
         name: Initial Buildx
+        if: github.event_name != 'schedule'
         uses: docker/build-push-action@v7
         with:
           context: .
@@ -46,32 +59,27 @@ jobs:
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
           cache-from: type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache
-          no-cache: ${{ github.event_name == 'schedule' }}
-          pull: ${{ github.event_name == 'schedule' }}
       -
-        name: Load Built Image and Get Variables
-        id: vars
+        name: Load Built Image and Verify Version
+        if: github.event_name != 'schedule'
+        id: verify
+        env:
+          EXPECTED_VER: ${{ steps.vars.outputs.ver_full }}
         run: |
-          BUILD_CACHE_FLAGS=()
-          if [[ "${{ github.event_name }}" == "schedule" ]]; then
-            BUILD_CACHE_FLAGS+=(--no-cache --pull)
-          fi
           docker buildx build \
             -t ${{ env.IMAGE_NAME }}:testing \
             --platform=linux/amd64 \
             --build-arg ALPINE_VER=${{ env.ALPINE_VER }} \
             --cache-from type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache \
-            "${BUILD_CACHE_FLAGS[@]}" \
             --load \
             .
           CID=$(docker run -d ${{ env.IMAGE_NAME }}:testing)
-          VER_FULL=$(docker exec $CID flexget -V | sed -n 1p)
-          echo "ver_full=$VER_FULL" >> $GITHUB_OUTPUT
+          ACTUAL_VER=$(docker exec $CID flexget -V | sed -n 1p)
           docker rm -f $CID
-          VER_MINOR=$(echo $VER_FULL | cut -d. -f-2)
-          echo "ver_minor=$VER_MINOR" >> $GITHUB_OUTPUT
-          VER_MAJOR=$(echo $VER_FULL | cut -d. -f-1)
-          echo "ver_major=$VER_MAJOR" >> $GITHUB_OUTPUT
+          if [[ "${ACTUAL_VER}" != "${EXPECTED_VER}" ]]; then
+            echo "Expected FlexGet ${EXPECTED_VER}, got ${ACTUAL_VER}" >&2
+            exit 1
+          fi
       -
         name: Login to docker.io
         uses: docker/login-action@v4
