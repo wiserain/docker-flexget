@@ -49,7 +49,6 @@ jobs:
           echo "ver_major=$(echo "${VER_FULL}" | cut -d. -f-1)" >> "$GITHUB_OUTPUT"
       -
         name: Initial Buildx
-        if: github.event_name != 'schedule'
         uses: docker/build-push-action@v7
         with:
           context: .
@@ -59,9 +58,10 @@ jobs:
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
           cache-from: type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache
+          no-cache: ${{ github.event_name == 'schedule' }}
+          pull: true
       -
         name: Load Built Image and Verify Version
-        if: github.event_name != 'schedule'
         id: verify
         env:
           EXPECTED_VER: ${{ steps.vars.outputs.ver_full }}
@@ -70,7 +70,6 @@ jobs:
             -t ${{ env.IMAGE_NAME }}:testing \
             --platform=linux/amd64 \
             --build-arg ALPINE_VER=${{ env.ALPINE_VER }} \
-            --cache-from type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache \
             --load \
             .
           CID=$(docker run -d ${{ env.IMAGE_NAME }}:testing)
@@ -114,10 +113,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
-          cache-from: type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache
           cache-to: type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache,mode=max,compression=zstd
-          no-cache: ${{ github.event_name == 'schedule' }}
-          pull: ${{ github.event_name == 'schedule' }}
           push: true
       -
         name: Notification

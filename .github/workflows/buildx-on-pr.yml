@@ -5,7 +5,7 @@ on:
 
 env:
   DOCKERHUB_USER: wiserain
-  IMAGE_NAME: ghcr.io/wiserain/flexget
+  IMAGE_NAME: wiserain/flexget
   ALPINE_VER: '3.23'
 
 jobs:
@@ -35,13 +35,14 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          tags: ${{ env.IMAGE_NAME }}:testing
+          tags: ghcr.io/${{ env.IMAGE_NAME }}:testing
           platforms: linux/amd64,linux/arm64
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
           cache-from: |
-            type=registry,ref=${{ env.IMAGE_NAME }}:buildcache-pr-${{ github.event.pull_request.number }}
-            type=registry,ref=${{ env.IMAGE_NAME }}:buildcache
+            type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache-pr-${{ github.event.pull_request.number }}
+            type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache
+          pull: true
       # 
       # now only for repository owner
       # 
@@ -66,10 +67,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
-          cache-from: |
-            type=registry,ref=${{ env.IMAGE_NAME }}:buildcache-pr-${{ github.event.pull_request.number }}
-            type=registry,ref=${{ env.IMAGE_NAME }}:buildcache
-          cache-to: type=registry,ref=${{ env.IMAGE_NAME }}:buildcache-pr-${{ github.event.pull_request.number }},mode=max,compression=zstd
+          cache-to: type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache-pr-${{ github.event.pull_request.number }},mode=max,compression=zstd
           push: true
       -
         name: Notification
