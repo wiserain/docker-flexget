@@ -61,17 +61,23 @@ jobs:
           no-cache: ${{ github.event_name == 'schedule' }}
           pull: true
       -
-        name: Load Built Image and Verify Version
+        name: Load Image
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Dockerfile
+          tags: ${{ env.IMAGE_NAME }}:testing
+          platforms: linux/amd64
+          build-args: |
+            ALPINE_VER=${{ env.ALPINE_VER }}
+          cache-from: ${{ github.event_name != 'schedule' && format('type=registry,ref=ghcr.io/{0}:buildcache', env.IMAGE_NAME) || '' }}
+          load: true
+      -
+        name: Verify Image Version
         id: verify
         env:
           EXPECTED_VER: ${{ steps.vars.outputs.ver_full }}
         run: |
-          docker buildx build \
-            -t ${{ env.IMAGE_NAME }}:testing \
-            --platform=linux/amd64 \
-            --build-arg ALPINE_VER=${{ env.ALPINE_VER }} \
-            --load \
-            .
           CID=$(docker run -d ${{ env.IMAGE_NAME }}:testing)
           ACTUAL_VER=$(docker exec $CID flexget -V | sed -n 1p)
           docker rm -f $CID
@@ -113,6 +119,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
+          cache-from: ${{ github.event_name != 'schedule' && format('type=registry,ref=ghcr.io/{0}:buildcache', env.IMAGE_NAME) || '' }}
           cache-to: type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache,mode=max,compression=zstd
           push: true
       -
