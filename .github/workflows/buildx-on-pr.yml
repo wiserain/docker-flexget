@@ -3,6 +3,10 @@ name: buildx-on-pr
 on:
   pull_request:
 
+concurrency:
+  group: ${{ github.workflow }}-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 defaults:
   run:
     shell: bash
