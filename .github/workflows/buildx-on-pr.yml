@@ -3,6 +3,10 @@ name: buildx-on-pr
 on:
   pull_request:
 
+defaults:
+  run:
+    shell: bash
+
 env:
   DOCKERHUB_USER: wiserain
   IMAGE_NAME: wiserain/flexget
@@ -30,23 +34,6 @@ jobs:
         name: Set up Buildx
         uses: docker/setup-buildx-action@v4
       -
-        name: Initial Buildx
-        uses: docker/build-push-action@v7
-        with:
-          context: .
-          file: Dockerfile
-          tags: ghcr.io/${{ env.IMAGE_NAME }}:testing
-          platforms: linux/amd64,linux/arm64
-          build-args: |
-            ALPINE_VER=${{ env.ALPINE_VER }}
-          cache-from: |
-            type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache-pr-${{ github.event.pull_request.number }}
-            type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache
-          pull: true
-      # 
-      # now only for repository owner
-      # 
-      -
         name: Login to ghcr.io
         uses: docker/login-action@v4
         if: github.actor == github.event.repository.owner.login
@@ -57,21 +44,21 @@ jobs:
       -
         name: Buildx and Push
         uses: docker/build-push-action@v7
-        if: github.actor == github.event.repository.owner.login
         with:
           context: .
           file: Dockerfile
           tags: |
-            ghcr.io/${{ env.IMAGE_NAME }}:testing
-            ghcr.io/${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}
+            ghcr.io/${{ env.IMAGE_NAME }}:pr
+            ghcr.io/${{ env.IMAGE_NAME }}:pr-${{ github.event.pull_request.number }}
           platforms: linux/amd64,linux/arm64
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
           cache-from: |
             type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache-pr-${{ github.event.pull_request.number }}
             type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache
-          cache-to: type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache-pr-${{ github.event.pull_request.number }},mode=max,compression=zstd
-          push: true
+          cache-to: ${{ github.actor == github.event.repository.owner.login && format('type=registry,ref=ghcr.io/{0}:buildcache-pr-{1},mode=max,compression=zstd', env.IMAGE_NAME, github.event.pull_request.number) || '' }}
+          pull: true
+          push: ${{ github.actor == github.event.repository.owner.login }}
       -
         name: Notification
         uses: sarisia/actions-status-discord@v1
@@ -80,9 +67,10 @@ jobs:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
           description: |
-            ghcr.io/${{ env.IMAGE_NAME }}:testing
-            ghcr.io/${{ env.IMAGE_NAME }}:testing-${{ github.event.pull_request.number }}
-      - name: Upload Artifact
+            ghcr.io/${{ env.IMAGE_NAME }}:pr
+            ghcr.io/${{ env.IMAGE_NAME }}:pr-${{ github.event.pull_request.number }}
+      -
+        name: Upload Artifact
         uses: actions/upload-artifact@v7
         if: failure()
         with:

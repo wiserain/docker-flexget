@@ -8,6 +8,10 @@ on:
     branches:
       - 'master'
 
+defaults:
+  run:
+    shell: bash
+
 env:
   DOCKERHUB_USER: wiserain
   IMAGE_NAME: wiserain/flexget
@@ -48,44 +52,6 @@ jobs:
           echo "ver_minor=$(echo "${VER_FULL}" | cut -d. -f-2)" >> "$GITHUB_OUTPUT"
           echo "ver_major=$(echo "${VER_FULL}" | cut -d. -f-1)" >> "$GITHUB_OUTPUT"
       -
-        name: Initial Buildx
-        uses: docker/build-push-action@v7
-        with:
-          context: .
-          file: Dockerfile
-          tags: ${{ env.IMAGE_NAME }}:testing
-          platforms: linux/amd64,linux/arm64
-          build-args: |
-            ALPINE_VER=${{ env.ALPINE_VER }}
-          cache-from: type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache
-          no-cache: ${{ github.event_name == 'schedule' }}
-          pull: true
-      -
-        name: Load Image
-        uses: docker/build-push-action@v7
-        with:
-          context: .
-          file: Dockerfile
-          tags: ${{ env.IMAGE_NAME }}:testing
-          platforms: linux/amd64
-          build-args: |
-            ALPINE_VER=${{ env.ALPINE_VER }}
-          cache-from: ${{ github.event_name != 'schedule' && format('type=registry,ref=ghcr.io/{0}:buildcache', env.IMAGE_NAME) || '' }}
-          load: true
-      -
-        name: Verify Image Version
-        id: verify
-        env:
-          EXPECTED_VER: ${{ steps.vars.outputs.ver_full }}
-        run: |
-          CID=$(docker run -d ${{ env.IMAGE_NAME }}:testing)
-          ACTUAL_VER=$(docker exec $CID flexget -V | sed -n 1p)
-          docker rm -f $CID
-          if [[ "${ACTUAL_VER}" != "${EXPECTED_VER}" ]]; then
-            echo "Expected FlexGet ${EXPECTED_VER}, got ${ACTUAL_VER}" >&2
-            exit 1
-          fi
-      -
         name: Login to docker.io
         uses: docker/login-action@v4
         with:
@@ -98,30 +64,57 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      # 
-      # release
-      # 
       -
         name: Buildx and Push
+        id: build
         uses: docker/build-push-action@v7
         with:
           context: .
           file: Dockerfile
           tags: |
-            ${{ env.IMAGE_NAME }}:latest
-            ${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_full }}
-            ${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_minor }}
-            ${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_major }}
-            ghcr.io/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_full }}
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_minor }}
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.ver_major }}
+            ${{ env.IMAGE_NAME }}:ci
+            ghcr.io/${{ env.IMAGE_NAME }}:ci
           platforms: linux/amd64,linux/arm64
           build-args: |
             ALPINE_VER=${{ env.ALPINE_VER }}
           cache-from: ${{ github.event_name != 'schedule' && format('type=registry,ref=ghcr.io/{0}:buildcache', env.IMAGE_NAME) || '' }}
           cache-to: type=registry,ref=ghcr.io/${{ env.IMAGE_NAME }}:buildcache,mode=max,compression=zstd
+          no-cache: ${{ github.event_name == 'schedule' }}
+          pull: true
           push: true
+      -
+        name: Verify Image
+        env:
+          EXPECTED_VER: ${{ steps.vars.outputs.ver_full }}
+          IMAGE_DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          set -euo pipefail
+
+          test -n "$IMAGE_DIGEST"
+
+          IMAGE="${{ env.IMAGE_NAME }}@${IMAGE_DIGEST}"
+          CID=$(docker run -d "${IMAGE}")
+          cleanup() {
+            docker rm -f "${CID}" >/dev/null 2>&1 || true
+          }
+          trap cleanup EXIT
+          ACTUAL_VER=$(docker exec "${CID}" flexget -V | sed -n 1p)
+          if [[ "${ACTUAL_VER}" != "${EXPECTED_VER}" ]]; then
+            echo "Expected FlexGet ${EXPECTED_VER}, got ${ACTUAL_VER}" >&2
+            exit 1
+          fi
+      -
+        name: Promote Tags
+        run: |
+          set -euo pipefail
+          for image in "${IMAGE_NAME}" "ghcr.io/${IMAGE_NAME}"; do
+            docker buildx imagetools create \
+              --tag "${image}:latest" \
+              --tag "${image}:${{ steps.vars.outputs.ver_full }}" \
+              --tag "${image}:${{ steps.vars.outputs.ver_minor }}" \
+              --tag "${image}:${{ steps.vars.outputs.ver_major }}" \
+              "${image}@${{ steps.build.outputs.digest }}"
+          done
       -
         name: Notification
         uses: sarisia/actions-status-discord@v1
