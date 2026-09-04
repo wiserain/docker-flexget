@@ -110,7 +110,7 @@ cryptography==50.0.1
     # via
     #   flexget
     #   paramiko
-curl-cffi==0.16.2
+curl-cffi==0.16.3
     # via flexget
 decorator==5.3.1
     # via
