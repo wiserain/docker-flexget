@@ -60,9 +60,9 @@ beautifulsoup4==4.15.0
     #   subliminal
 blinker==1.9.0
     # via flask
-boto3==1.43.89
+boto3==1.43.93
     # via flexget
-botocore==1.43.89
+botocore==1.43.93
     # via
     #   boto3
     #   flexget
@@ -141,7 +141,7 @@ flask==3.1.3
     #   flask-login
     #   flask-restx
     #   flexget
-flask-compress==1.24
+flask-compress==1.25
     # via flexget
 flask-cors==6.0.5
     # via flexget
@@ -149,7 +149,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.2
     # via flexget
-flexget[all]==3.20.13
+flexget[all]==3.21.0
     # via -r requirements.in
 frozenlist==1.8.0
     # via
@@ -160,9 +160,9 @@ ftputil==5.2.0
     # via flexget
 future==0.18.3
     # via irc-bot
-greenlet==3.5.5
+greenlet==3.5.6
     # via sqlalchemy
-guessit==3.8.0
+guessit==4.2.1
     # via
     #   flexget
     #   subliminal
@@ -262,7 +262,7 @@ more-itertools==11.1.0
     #   cherrypy
     #   jaraco-functools
     #   jaraco-text
-multidict==6.7.1
+multidict==6.8.0
     # via
     #   aiohttp
     #   flexget
@@ -277,7 +277,7 @@ paramiko==3.5.1
     #   pysftp
 pendulum==3.2.0
     # via flexget
-platformdirs==4.11.7
+platformdirs==4.11.8
     # via
     #   flexget
     #   subliminal
@@ -333,7 +333,7 @@ python-dateutil==2.9.0.post0
     #   guessit
     #   pendulum
     #   tempora
-python-socks[asyncio]==3.0.0
+python-socks[asyncio]==3.1.1
     # via
     #   aiohttp-socks
     #   flexget
@@ -400,7 +400,7 @@ soupsieve==2.9.2
     # via
     #   beautifulsoup4
     #   flexget
-sqlalchemy==2.0.52
+sqlalchemy==2.0.54
     # via flexget
 srt==3.5.3
     # via
@@ -441,7 +441,7 @@ typing-extensions==4.16.0
     #   sqlalchemy
     #   tempora
     #   transmission-rpc
-tzdata==2026.3
+tzdata==2026.4
     # via pendulum
 tzlocal==5.4.4
     # via apscheduler
