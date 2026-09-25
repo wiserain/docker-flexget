@@ -60,9 +60,9 @@ beautifulsoup4==4.15.0
     #   subliminal
 blinker==1.9.0
     # via flask
-boto3==1.43.93
+boto3==1.43.98
     # via flexget
-botocore==1.43.93
+botocore==1.43.98
     # via
     #   boto3
     #   flexget
@@ -149,7 +149,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.2
     # via flexget
-flexget[all]==3.21.0
+flexget[all]==3.21.2
     # via -r requirements.in
 frozenlist==1.8.0
     # via
@@ -160,8 +160,6 @@ ftputil==5.2.0
     # via flexget
 future==0.18.3
     # via irc-bot
-greenlet==3.5.6
-    # via sqlalchemy
 guessit==4.2.1
     # via
     #   flexget
@@ -193,7 +191,7 @@ hyperframe==6.1.0
     # via
     #   flexget
     #   h2
-idna==3.19
+idna==3.20
     # via
     #   anyio
     #   flexget
@@ -239,7 +237,7 @@ jsonschema-specifications==2025.9.1
     # via
     #   flexget
     #   jsonschema
-knowit==0.6.1
+knowit==0.7.0
     # via
     #   flexget
     #   subliminal
@@ -262,7 +260,7 @@ more-itertools==11.1.0
     #   cherrypy
     #   jaraco-functools
     #   jaraco-text
-multidict==6.8.0
+multidict==6.9.0
     # via
     #   aiohttp
     #   flexget
@@ -277,7 +275,7 @@ paramiko==3.5.1
     #   pysftp
 pendulum==3.2.0
     # via flexget
-platformdirs==4.11.8
+platformdirs==4.11.11
     # via
     #   flexget
     #   subliminal
@@ -287,7 +285,7 @@ plumbum==2.0.2
     # via rpyc
 portend==3.2.1
     # via cherrypy
-propcache==0.5.2
+propcache==0.5.4
     # via
     #   aiohttp
     #   flexget
@@ -314,7 +312,7 @@ pynacl==1.6.2
     #   paramiko
 pynzb==0.1.0
     # via flexget
-pyparsing==3.3.2
+pyparsing==3.3.3
     # via
     #   cloudscraper
     #   flexget
@@ -400,7 +398,7 @@ soupsieve==2.9.2
     # via
     #   beautifulsoup4
     #   flexget
-sqlalchemy==2.0.54
+sqlalchemy==2.1.1
     # via flexget
 srt==3.5.3
     # via
@@ -419,7 +417,7 @@ tomlkit==0.15.1
     # via
     #   flexget
     #   subliminal
-trakit==0.3.0
+trakit==0.4.0
     # via
     #   flexget
     #   knowit
@@ -449,7 +447,7 @@ unpaddedbase64==2.1.0
     # via
     #   flexget
     #   matrix-nio
-urllib3==2.7.0
+urllib3==2.8.0
     # via
     #   botocore
     #   flexget
@@ -464,7 +462,7 @@ werkzeug==3.1.8
     #   flask-login
     #   flask-restx
     #   flexget
-yarl==1.24.5
+yarl==1.25.1
     # via
     #   aiohttp
     #   flexget
