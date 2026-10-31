@@ -12,7 +12,7 @@ aiohappyeyeballs==2.7.1
     # via
     #   aiohttp
     #   flexget
-aiohttp==3.14.3
+aiohttp==3.14.5
     # via
     #   aiohttp-socks
     #   flexget
@@ -60,16 +60,16 @@ beautifulsoup4==4.15.0
     #   subliminal
 blinker==1.9.0
     # via flask
-boto3==1.43.98
+boto3==1.43.118
     # via flexget
-botocore==1.43.98
+botocore==1.43.118
     # via
     #   boto3
     #   flexget
     #   s3transfer
 brotli==1.2.1
     # via flask-compress
-certifi==2026.7.22
+certifi==2026.10.23
     # via
     #   curl-cffi
     #   flexget
@@ -82,11 +82,11 @@ cffi==2.1.1
     #   curl-cffi
     #   flexget
     #   pynacl
-chardet==7.6.0
+chardet==7.7.0
     # via
     #   flexget
     #   subliminal
-charset-normalizer==3.5.1
+charset-normalizer==3.5.2
     # via
     #   flexget
     #   requests
@@ -106,11 +106,11 @@ click-option-group==0.5.9
     #   subliminal
 cloudscraper==1.2.71
     # via -r requirements.in
-cryptography==50.0.1
+cryptography==50.0.2
     # via
     #   flexget
     #   paramiko
-curl-cffi==0.16.3
+curl-cffi==0.17.0
     # via flexget
 decorator==5.3.1
     # via
@@ -141,7 +141,7 @@ flask==3.1.3
     #   flask-login
     #   flask-restx
     #   flexget
-flask-compress==1.25
+flask-compress==1.26
     # via flexget
 flask-cors==6.0.5
     # via flexget
@@ -149,7 +149,7 @@ flask-login==0.6.3
     # via flexget
 flask-restx==1.3.2
     # via flexget
-flexget[all]==3.22.6
+flexget[all]==3.22.9
     # via -r requirements.in
 frozenlist==1.8.0
     # via
@@ -237,7 +237,7 @@ jsonschema-specifications==2025.9.1
     # via
     #   flexget
     #   jsonschema
-knowit==0.7.0
+knowit==0.7.1
     # via
     #   flexget
     #   subliminal
@@ -262,7 +262,7 @@ more-itertools==11.2.1
     #   cherrypy
     #   jaraco-functools
     #   jaraco-text
-multidict==6.9.0
+multidict==7.2.1
     # via
     #   aiohttp
     #   flexget
@@ -277,11 +277,11 @@ paramiko==3.5.1
     #   pysftp
 pendulum==3.3.0
     # via flexget
-platformdirs==4.11.11
+platformdirs==4.13.5
     # via
     #   flexget
     #   subliminal
-plexapi==4.18.2
+plexapi==4.18.3
     # via flexget
 plumbum==2.0.2
     # via rpyc
@@ -294,11 +294,11 @@ propcache==0.5.4
     #   yarl
 psutil==7.2.2
     # via flexget
-pycparser==3.0
+pycparser==3.12
     # via
     #   cffi
     #   flexget
-pycryptodome==3.23.0
+pycryptodome==4.2.0
     # via
     #   flexget
     #   matrix-nio
@@ -343,7 +343,7 @@ pyyaml==6.0.3
     # via
     #   flexget
     #   knowit
-qbittorrent-api==2026.8.1
+qbittorrent-api==2026.10.1
     # via flexget
 rarfile==4.5
     # via
@@ -375,14 +375,14 @@ rich==15.0.0
     # via
     #   flexget
     #   typer
-rpds-py==2026.6.3
+rpds-py==2026.9.1
     # via
     #   flexget
     #   jsonschema
     #   referencing
 rpyc==6.0.2
     # via flexget
-s3transfer==0.19.2
+s3transfer==0.19.3
     # via
     #   boto3
     #   flexget
@@ -396,7 +396,7 @@ six==1.17.0
     #   python-dateutil
 socksio==1.0.0
     # via flexget
-soupsieve==2.9.2
+soupsieve==3.0.4
     # via
     #   beautifulsoup4
     #   flexget
@@ -411,11 +411,11 @@ stevedore==5.9.1
     #   dogpile-cache
     #   flexget
     #   subliminal
-subliminal==2.7.1
+subliminal==2.8.0
     # via flexget
 tempora==5.13.0
     # via portend
-tomlkit==0.15.1
+tomlkit==0.15.2
     # via
     #   flexget
     #   subliminal
@@ -439,9 +439,10 @@ typing-extensions==4.16.0
     #   plumbum
     #   referencing
     #   sqlalchemy
+    #   subliminal
     #   tempora
     #   transmission-rpc
-tzdata==2026.5
+tzdata==2026.6
     # via pendulum
 tzlocal==5.4.5
     # via apscheduler
